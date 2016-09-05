@@ -17,7 +17,7 @@ def prepare_recipe(package):
 
     stamp = datetime.fromtimestamp(int(utime)).strftime('%Y%m%d%H%M%S')
 
-    recipe = Template(content).render(version='dev-' + stamp + '-' + chash)
+    recipe = Template(content).render(version='dev.' + stamp + '.' + chash)
 
     print(recipe)
 
