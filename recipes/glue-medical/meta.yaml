@@ -1,0 +1,35 @@
+package:
+  name: glue-medical
+  version: {{version}}
+
+source:
+  path: ../../glue-medical
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - glueviz
+    - gdcm
+    - pydicom
+
+test:
+  imports:
+    - glue_medical
+
+about:
+  home: https://github.com/glue-viz/glue-medical
+  license: BSD 3-Clause
+  summary: Medical plugin for glue
+
+extra:
+  recipe-maintainers:
+    - astrofrog
