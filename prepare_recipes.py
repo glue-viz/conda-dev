@@ -7,7 +7,7 @@ def prepare_recipe(package):
     with open('recipes/{0}/meta.yaml'.format(package)) as f:
         content = f.read()
 
-    mod = importlib.import_module(package)
+    mod = importlib.import_module(package.replace('-', '_'))
 
     recipe = Template(content).render(version=mod.__version__)
 
