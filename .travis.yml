@@ -29,15 +29,16 @@ before_install:
   - set -e
 
 script:
+
     - python prepare_recipes.py
     - cd recipes
     - source activate root
     - conda install conda-build
     - conda config --set anaconda_upload no
-    - conda build glue --output >& conda.log
-    - conda build glue-vispy-viewers --output >& conda.log
-    - conda build glue-medical --output >& conda.log
-    - conda build glue-geospatial --output >& conda.log
+    - conda build glue --output
+    - conda build glue-vispy-viewers --output
+    - conda build glue-medical --output
+    - conda build glue-geospatial --output
     - cat conda.log
 
     # set package="$(tail -f conda.log)";
