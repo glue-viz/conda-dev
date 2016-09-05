@@ -20,10 +20,10 @@ before_install:
   - source ci-helpers/travis/setup_conda_$TRAVIS_OS_NAME.sh
 
   # Clone repositories
-  - pip install git://github.com/glue-viz/glue.git --no-deps
-  - pip install git://github.com/glue-viz/glue-vispy-viewers.git --no-deps
-  - pip install git://github.com/glue-viz/glue-medical.git --no-deps
-  - pip install git://github.com/glue-viz/glue-geospatial.git --no-deps
+  - pip install git+git://github.com/glue-viz/glue.git --no-deps
+  - pip install git+git://github.com/glue-viz/glue-vispy-viewers.git --no-deps
+  - pip install git+git://github.com/glue-viz/glue-medical.git --no-deps
+  - pip install git+git://github.com/glue-viz/glue-geospatial.git --no-deps
 
   # Make sure a single failing command fails the build
   - set -e
