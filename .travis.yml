@@ -11,7 +11,7 @@ env:
     - PYTHON_VERSION=3.5
     - CONDA_CHANNELS='conda-forge'
     - CONDA_DEPENDENCIES='jinja2'
-    - secure: "a+GIg14t/Ltc8PbXBCxCiQ4Of0AHthTw2b8AQ1BAE9vDMnS36G3FylWvLgAM88n68vT0YAf2hAE5/9E+gB/vA/BZVTdpVaJUmPaznAfNnBBJqJUhq08chCtHoDAHbv741eLzqkLnZ57ZUhzI11LkLd9U7yOuSD63sxK05h77rKI="
+    - secure: "JZbtkRjYV5oPftxOX8jdJBmcV1YdrytKfvjkMRJY+axuwOX0Znn1NYOx6mjhD6tPKr9N5b8GJ96/8lSNvS2UqMEIJIkw7B0jNnBtHgUpLF41yVAOIix8gRK6l1xcFomK1ptn6x4HhDFtnOHUk45lx/Bm4bCvsrp4s6424U2TAIPZG4Y2JEE4/20vs5ms4EqBfbEsOnIXb09N3I2Mf2KVfC/bMzetKX6B6u54/28tQY2yeXhe3ElwMslU0HLE45aUoomleMge1z0IaJxiy1u+cENCOeCy9BaxMtxRNAUsWrxhDosngLEwcGQZxknAUypA7i444/Z4jNn9YeLDqPBaoTF7bWIj6rDKwuw8BRHs1Umtf5KFkS6TZv9zrh6n2Tvfn2ubjLImWwYzHnZv74Ze89XVMXndxBgmSMlfVd5WPDxfPL32DEgbWTTxfs2hM4goRHFHu6ipy2XsFHS7FoGXkcVJvIcX8xj2p+IJF7IGeGE2H41Chzg3DEVZgbCeCko2VRqbonrYMXzlWf4PFJ0u9+PM2zBlqnFLKOmKIPqV7Q3wo9mtLpbUQIcB4F5i8iBpOrnjxrs+0NTas9hPEMueoUpi2kJHED3Mp+GOBuK95Jp0Fum88tOQtffiLUT5y/UXCdaIGrOTHQQG5T0iebE1Ig+gNOHlQle1OruVPUq2im0="
 
 before_install:
 
@@ -35,11 +35,13 @@ script:
     - source activate root
     - conda install conda-build
     - conda config --set anaconda_upload no
-    - conda build glue --output
-    - conda build glue-vispy-viewers --output
-    - conda build glue-medical --output
-    - conda build glue-geospatial --output
-    - cat conda.log
 
-    # set package="$(tail -f conda.log)";
-    # anaconda upload $package -l dev --token=$ANACONDA_TOKEN;
+    - conda build glue
+    - conda build glue-vispy-viewers
+    - conda build glue-medical
+    - conda build glue-geospatial
+
+    - anaconda upload "$(conda build glue --output)" -l dev --token=$ANACONDA_TOKEN;
+    - anaconda upload "$(conda build glue-vispy-viewers --output)" -l dev --token=$ANACONDA_TOKEN;
+    - anaconda upload "$(conda build glue-medical --output)" -l dev --token=$ANACONDA_TOKEN;
+    - anaconda upload "$(conda build glue-geospatial --output)" -l dev --token=$ANACONDA_TOKEN;
