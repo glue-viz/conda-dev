@@ -33,7 +33,7 @@ script:
     - python prepare_recipes.py
     - cd recipes
     - source activate root
-    - conda install conda-build
+    - conda install conda-build anaconda-client
     - conda config --set anaconda_upload no
 
     - conda build glue
