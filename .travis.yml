@@ -10,7 +10,7 @@ env:
   global:
     - PYTHON_VERSION=3.5
     - CONDA_CHANNELS='conda-forge'
-    - CONDA_DEPENDENCIES='jinja2 numpy pandas matplotlib'
+    - CONDA_DEPENDENCIES='jinja2 numpy pandas matplotlib pyopengl'
     - secure: "a+GIg14t/Ltc8PbXBCxCiQ4Of0AHthTw2b8AQ1BAE9vDMnS36G3FylWvLgAM88n68vT0YAf2hAE5/9E+gB/vA/BZVTdpVaJUmPaznAfNnBBJqJUhq08chCtHoDAHbv741eLzqkLnZ57ZUhzI11LkLd9U7yOuSD63sxK05h77rKI="
 
 before_install:
