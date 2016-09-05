@@ -10,7 +10,7 @@ env:
   global:
     - PYTHON_VERSION=3.5
     - CONDA_CHANNELS='conda-forge'
-    - CONDA_DEPENDENCIES='jinja2 numpy pandas matplotlib pyopengl'
+    - CONDA_DEPENDENCIES='jinja2'
     - secure: "a+GIg14t/Ltc8PbXBCxCiQ4Of0AHthTw2b8AQ1BAE9vDMnS36G3FylWvLgAM88n68vT0YAf2hAE5/9E+gB/vA/BZVTdpVaJUmPaznAfNnBBJqJUhq08chCtHoDAHbv741eLzqkLnZ57ZUhzI11LkLd9U7yOuSD63sxK05h77rKI="
 
 before_install:
@@ -20,10 +20,10 @@ before_install:
   - source ci-helpers/travis/setup_conda_$TRAVIS_OS_NAME.sh
 
   # Clone repositories
-  - pip install git+git://github.com/glue-viz/glue.git --no-deps
-  - pip install git+git://github.com/glue-viz/glue-vispy-viewers.git --no-deps
-  - pip install git+git://github.com/glue-viz/glue-medical.git --no-deps
-  - pip install git+git://github.com/glue-viz/glue-geospatial.git --no-deps
+  - git clone git://github.com/glue-viz/glue.git
+  - git clone git://github.com/glue-viz/glue-vispy-viewers.git
+  - git clone git://github.com/glue-viz/glue-medical.git
+  - git clone git://github.com/glue-viz/glue-geospatial.git
 
   # Make sure a single failing command fails the build
   - set -e
