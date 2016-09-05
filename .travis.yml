@@ -1,0 +1,44 @@
+language: c
+
+sudo: false
+
+os:
+    - linux
+    - osx
+
+env:
+  global:
+    - PYTHON_VERSION=3.5
+    - CONDA_CHANNELS='conda-forge'
+    - CONDA_DEPENDENCIES='requests jinja2 pyyaml numpy pandas matplotlib'
+    - secure: "a+GIg14t/Ltc8PbXBCxCiQ4Of0AHthTw2b8AQ1BAE9vDMnS36G3FylWvLgAM88n68vT0YAf2hAE5/9E+gB/vA/BZVTdpVaJUmPaznAfNnBBJqJUhq08chCtHoDAHbv741eLzqkLnZ57ZUhzI11LkLd9U7yOuSD63sxK05h77rKI="
+
+before_install:
+
+  # Install ci-helpers and set up conda
+  - git clone git://github.com/astropy/ci-helpers.git
+  - source ci-helpers/travis/setup_conda_$TRAVIS_OS_NAME.sh
+
+  # Clone repositories
+  - pip install git://github.com/glue-viz/glue.git
+  - pip install git://github.com/glue-viz/glue-vispy-viewers.git
+  - pip install git://github.com/glue-viz/glue-medical.git
+  - pip install git://github.com/glue-viz/glue-geospatial.git
+
+  # Make sure a single failing command fails the build
+  - set -e
+
+script:
+    - python prepare_recipes.py
+    - cd recipes
+    - source activate root
+    - conda install conda-build
+    - conda config --set anaconda_upload no
+    - conda build glue --output >& conda.log
+    - conda build glue-vispy-viewers --output >& conda.log
+    - conda build glue-medical --output >& conda.log
+    - conda build glue-geospatial --output >& conda.log
+    - cat conda.log
+
+    # set package="$(tail -f conda.log)";
+    # anaconda upload $package -l dev --token=$ANACONDA_TOKEN;
