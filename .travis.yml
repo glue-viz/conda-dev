@@ -41,7 +41,7 @@ script:
     - conda build glue-medical
     - conda build glue-geospatial
 
-    - anaconda upload "$(conda build glue --output)" -l dev -t $ANACONDA_TOKEN;
-    - anaconda upload "$(conda build glue-vispy-viewers --output)" -l dev -t $ANACONDA_TOKEN;
-    - anaconda upload "$(conda build glue-medical --output)" -l dev -t $ANACONDA_TOKEN;
-    - anaconda upload "$(conda build glue-geospatial --output)" -l dev -t $ANACONDA_TOKEN;
+    - anaconda upload -l dev -t $ANACONDA_TOKEN "$(conda build glue --output)"
+    - anaconda upload -l dev -t $ANACONDA_TOKEN "$(conda build glue-vispy-viewers --output)"
+    - anaconda upload -l dev -t $ANACONDA_TOKEN "$(conda build glue-medical --output)"
+    - anaconda upload -l dev -t $ANACONDA_TOKEN "$(conda build glue-geospatial --output)"
