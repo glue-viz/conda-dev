@@ -48,4 +48,4 @@ script:
 
     - $CONDA_BUILD glueviz
     - $CONDA_BUILD glueviz --output
-    - anaconda -t $ANACONDA_TOKEN upload --force -l dev "$($CONDA_BUILD glueviz --output)"$
+    - anaconda -t $ANACONDA_TOKEN upload --force -l dev "$($CONDA_BUILD glueviz --output)"
