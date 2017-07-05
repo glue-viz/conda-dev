@@ -19,16 +19,16 @@ requirements:
     - python
     - numpy
     - pyopengl
-    - glueviz
-    - scikit-image
+    - glue-core >=0.10
     - matplotlib
+    - qtpy
+    - pyqt 4.11.*|5.6.*
 
 test:
-  requires:
-    - mock
-    - pytest
   imports:
     - glue_vispy_viewers
+    - glue_vispy_viewers.scatter
+    - glue_vispy_viewers.volume
 
 about:
   home: https://github.com/glue-viz/glue-vispy-viewers
