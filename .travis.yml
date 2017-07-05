@@ -23,6 +23,7 @@ before_install:
   # Clone repositories
   - git clone git://github.com/glue-viz/glue.git glue-core
   - git clone git://github.com/glue-viz/glue-vispy-viewers.git
+  - git clone git://github.com/glue-viz/glueviz.git
 
 script:
 
@@ -42,4 +43,9 @@ script:
     - conda build --python $PYTHON_VERSION glue-vispy-viewers
     - conda build glue-vispy-viewers --output
     - anaconda -t $ANACONDA_TOKEN upload --force -l dev "$(conda build glue-vispy-viewers --output)"
+
+    - conda build --python $PYTHON_VERSION glueviz
+    - conda build glueviz --output
+    - anaconda -t $ANACONDA_TOKEN upload --force -l dev "$(conda build glueviz --output)"$
+
 

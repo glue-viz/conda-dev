@@ -1,0 +1,44 @@
+# NOTE: this is a meta-package that includes the core glue code as well as stable
+# plugins. This is the main conda package we want in the Navigator, so we add the
+# app: entry here and not in the glue-core package. Even though glueviz is a
+# Python package on PyPI, and has a setup.py file, we don't include a build command
+# below since the only purpose of that command is to trigger the installation of the
+# dependencies.
+
+package:
+  name: glueviz
+  version: {{version}}
+
+source:
+  path: ../../glueviz
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  run:
+    - glue-core
+    - glue-vispy-viewers
+
+test:
+  commands:
+    - glue --version
+    - glue-deps list
+
+app:
+  entry: glue
+  icon: logo.png
+  summary: Multi-dimensional linked data exploration
+  type: desk
+
+about:
+  home: http://glueviz.org
+  license: BSD 3-Clause
+  license_file: LICENSE
+  summary: Multi-dimensional linked data exploration
+
+extra:
+  recipe-maintainers:
+    - astrofrog
