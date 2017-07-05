@@ -24,10 +24,6 @@ before_install:
   - git clone git://github.com/glue-viz/glue.git glue-core
   - git clone git://github.com/glue-viz/glue-vispy-viewers.git
 
-  # Make sure a single failing command fails the build
-  - set -e
-
-
 script:
 
     # The following puts the correct version numbers in the recipes
