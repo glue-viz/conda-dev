@@ -18,9 +18,11 @@ build:
 
 requirements:
 
+  # Note that we can't do >=0.11 and >=0.8 here because 0.11.dev counts as less than
+  # 0.11 for example, so we use .999 instead as a workaround.
   run:
-    - glue-core
-    - glue-vispy-viewers
+    - glue-core >0.10.999
+    - glue-vispy-viewers >=0.7.999
 
 test:
   commands:
