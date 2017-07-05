@@ -4,44 +4,40 @@ sudo: false
 
 os:
     - linux
-    - osx
 
 env:
   global:
-    - PYTHON_VERSION=3.5
-    - CONDA_CHANNELS='conda-forge'
+    - PYTHON_VERSION=3.6
     - CONDA_DEPENDENCIES='jinja2'
-    - secure: "JZbtkRjYV5oPftxOX8jdJBmcV1YdrytKfvjkMRJY+axuwOX0Znn1NYOx6mjhD6tPKr9N5b8GJ96/8lSNvS2UqMEIJIkw7B0jNnBtHgUpLF41yVAOIix8gRK6l1xcFomK1ptn6x4HhDFtnOHUk45lx/Bm4bCvsrp4s6424U2TAIPZG4Y2JEE4/20vs5ms4EqBfbEsOnIXb09N3I2Mf2KVfC/bMzetKX6B6u54/28tQY2yeXhe3ElwMslU0HLE45aUoomleMge1z0IaJxiy1u+cENCOeCy9BaxMtxRNAUsWrxhDosngLEwcGQZxknAUypA7i444/Z4jNn9YeLDqPBaoTF7bWIj6rDKwuw8BRHs1Umtf5KFkS6TZv9zrh6n2Tvfn2ubjLImWwYzHnZv74Ze89XVMXndxBgmSMlfVd5WPDxfPL32DEgbWTTxfs2hM4goRHFHu6ipy2XsFHS7FoGXkcVJvIcX8xj2p+IJF7IGeGE2H41Chzg3DEVZgbCeCko2VRqbonrYMXzlWf4PFJ0u9+PM2zBlqnFLKOmKIPqV7Q3wo9mtLpbUQIcB4F5i8iBpOrnjxrs+0NTas9hPEMueoUpi2kJHED3Mp+GOBuK95Jp0Fum88tOQtffiLUT5y/UXCdaIGrOTHQQG5T0iebE1Ig+gNOHlQle1OruVPUq2im0="
 
 before_install:
 
   # Install ci-helpers and set up conda
   - git clone git://github.com/astropy/ci-helpers.git
-  - source ci-helpers/travis/setup_conda_$TRAVIS_OS_NAME.sh
+  - source ci-helpers/travis/setup_conda.sh
 
   # Clone repositories
-  - git clone git://github.com/glue-viz/glue.git
+  - git clone git://github.com/glue-viz/glue.git glue-core
   - git clone git://github.com/glue-viz/glue-vispy-viewers.git
-  - git clone git://github.com/glue-viz/glue-medical.git
-  - git clone git://github.com/glue-viz/glue-geospatial.git
 
   # Make sure a single failing command fails the build
   - set -e
 
+
 script:
 
+    # The following puts the correct version numbers in the recipes
     - python prepare_recipes.py
-    - cd recipes
+
     - source activate root
     - conda install conda-build anaconda-client
     - conda config --set anaconda_upload no
 
-    - conda build glue
-    - conda build glue-vispy-viewers
-    - conda build glue-medical
-    - conda build glue-geospatial
+    - cd recipes
 
-    - anaconda upload -l dev -t $ANACONDA_TOKEN "$(conda build glue --output)"
-    - anaconda upload -l dev -t $ANACONDA_TOKEN "$(conda build glue-vispy-viewers --output)"
-    - anaconda upload -l dev -t $ANACONDA_TOKEN "$(conda build glue-medical --output)"
-    - anaconda upload -l dev -t $ANACONDA_TOKEN "$(conda build glue-geospatial --output)"
+    - conda build glue-core
+    - conda build glue-vispy-viewers
+
+    - anaconda -t $ANACONDA_TOKEN upload -l dev "$(conda build glue-core --output)"
+    - anaconda -t $ANACONDA_TOKEN upload -l dev "$(conda build glue-vispy-viewers --output)"
+

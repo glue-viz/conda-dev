@@ -26,7 +26,7 @@ def prepare_recipe(package):
 
 
 if __name__ == "__main__":
-    prepare_recipe('glue')
+    prepare_recipe('glue-core')
     prepare_recipe('glue-vispy-viewers')
-    prepare_recipe('glue-medical')
-    prepare_recipe('glue-geospatial')
+    #prepare_recipe('glue-medical')
+    #prepare_recipe('glue-geospatial')
