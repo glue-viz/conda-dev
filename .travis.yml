@@ -38,6 +38,6 @@ script:
     - conda build --python $PYTHON_VERSION glue-core
     - conda build --python $PYTHON_VERSION glue-vispy-viewers
 
-    - anaconda -t $ANACONDA_TOKEN upload -l dev "$(conda build glue-core --output)"
-    - anaconda -t $ANACONDA_TOKEN upload -l dev "$(conda build glue-vispy-viewers --output)"
+    - anaconda -t $ANACONDA_TOKEN upload --force -l dev "$(conda build glue-core --output)"
+    - anaconda -t $ANACONDA_TOKEN upload --force -l dev "$(conda build glue-vispy-viewers --output)"
 
