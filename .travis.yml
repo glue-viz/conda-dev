@@ -3,11 +3,15 @@ language: c
 sudo: false
 
 os:
+    - osx
     - linux
 
 env:
-  global:
+  matrix:
+    - PYTHON_VERSION=2.7
+    - PYTHON_VERSION=3.5
     - PYTHON_VERSION=3.6
+  global:
     - CONDA_DEPENDENCIES='jinja2'
 
 before_install:
@@ -35,8 +39,8 @@ script:
 
     - cd recipes
 
-    - conda build glue-core
-    - conda build glue-vispy-viewers
+    - conda build --python $PYTHON_VERSION glue-core
+    - conda build --python $PYTHON_VERSION glue-vispy-viewers
 
     - anaconda -t $ANACONDA_TOKEN upload -l dev "$(conda build glue-core --output)"
     - anaconda -t $ANACONDA_TOKEN upload -l dev "$(conda build glue-vispy-viewers --output)"
