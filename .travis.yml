@@ -31,7 +31,7 @@ script:
     - python prepare_recipes.py
 
     - source activate root
-    - conda install conda-build anaconda-client
+    - conda install conda-build=2 anaconda-client
     - conda config --set anaconda_upload no
 
     - cd recipes
