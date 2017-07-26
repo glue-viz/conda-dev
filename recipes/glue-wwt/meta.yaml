@@ -1,0 +1,35 @@
+package:
+  name: glue-wwt
+  version: {{version}}
+
+source:
+  path: ../../glue-wwt
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - glue-core >0.10.999
+    - requests
+    - numpy
+
+test:
+  imports:
+    - glue_wwt
+
+about:
+  home: https://github.com/glue-viz/glue-wwt
+  license: BSD 3-Clause
+  summary: WWT viewer plugin for glue
+
+extra:
+  recipe-maintainers:
+    - astrofrog
