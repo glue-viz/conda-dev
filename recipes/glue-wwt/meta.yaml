@@ -17,9 +17,10 @@ requirements:
 
   run:
     - python
-    - glue-core >0.10.999
-    - requests
     - numpy
+    - glue-core >0.10.999
+    - astropy
+    - requests
 
 test:
   imports:
