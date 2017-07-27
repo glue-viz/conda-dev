@@ -20,6 +20,7 @@ requirements:
     - numpy
     - glue-core >0.10.999
     - astropy
+    - matplotlib
     - requests
 
 test:
