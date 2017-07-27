@@ -1,0 +1,30 @@
+# Show which commands are being run
+Set-PSDebug -Trace 1
+
+if ($env:ANACONDA_TOKEN -eq $null) {
+  echo "WARNING: ANACONDA_TOKEN is not set"
+}
+
+# Switch to root environment to have access to conda-build
+activate root
+
+conda install -n root conda-build=2 anaconda-client
+
+# Don't auto-upload, instead we upload manually specifying a token.
+conda config --set anaconda_upload no
+
+cd recipes
+
+$packages = @("glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt")
+
+foreach ($package in $packages) {
+
+  conda build --python $env:PYTHON_VERSION $package
+  $BUILD_OUTPUT = cmd /c conda build --python $env:PYTHON_VERSION $package --output 2>&1
+  echo $BUILD_OUTPUT
+
+  if ($env:APPVEYOR_PULL_REQUEST_NUMBER -eq $null -and $env:APPVEYOR_REPO_BRANCH -eq "master") {
+    anaconda -t $env:ANACONDA_TOKEN upload --force -l dev $BUILD_OUTPUT;
+  }
+
+}
