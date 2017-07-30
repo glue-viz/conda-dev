@@ -42,27 +42,27 @@ script:
     - $CONDA_BUILD glue-wwt
     - $CONDA_BUILD glue-wwt --output
     - test -e `$CONDA_BUILD glue-wwt --output`
-    - if [[ $TRAVIS_EVENT_TYPE == push && $TRAVIS_BRANCH == master ]]; then
+    - if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
         anaconda -t $ANACONDA_TOKEN upload --force -l dev "$($CONDA_BUILD glue-wwt --output)";
       fi
 
     - $CONDA_BUILD glue-core
     - $CONDA_BUILD glue-core --output
     - test -e `$CONDA_BUILD glue-core --output`
-    - if [[ $TRAVIS_EVENT_TYPE == push && $TRAVIS_BRANCH == master ]]; then
+    - if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
         anaconda -t $ANACONDA_TOKEN upload --force -l dev "$($CONDA_BUILD glue-core --output)";
       fi
 
     - $CONDA_BUILD glue-vispy-viewers
     - $CONDA_BUILD glue-vispy-viewers --output
     - test -e `$CONDA_BUILD glue-vispy-viewers --output`
-    - if [[ $TRAVIS_EVENT_TYPE == push && $TRAVIS_BRANCH == master ]]; then
+    - if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
         anaconda -t $ANACONDA_TOKEN upload --force -l dev "$($CONDA_BUILD glue-vispy-viewers --output)";
       fi
 
     - $CONDA_BUILD glueviz
     - $CONDA_BUILD glueviz --output
     - test -e `$CONDA_BUILD glueviz --output`
-    - if [[ $TRAVIS_EVENT_TYPE == push && $TRAVIS_BRANCH == master ]]; then
+    - if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
         anaconda -t $ANACONDA_TOKEN upload --force -l dev "$($CONDA_BUILD glueviz --output)";
       fi
