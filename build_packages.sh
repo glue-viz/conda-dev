@@ -12,8 +12,6 @@ conda install jinja2 pyqt
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
 
-cd recipes
-
 export CONDA_BUILD="conda build --python $PYTHON_VERSION"
 
 packages=(glue-core glue-vispy-viewers glueviz glue-wwt)
@@ -29,11 +27,15 @@ for package in $packages; do
   # The following puts the correct version number in the recipes
   python prepare_recipe.py $package
 
+  cd recipes
+
   conda build --python $PYTHON_VERSION $package
   output=`conda build --python $PYTHON_VERSION $package --output`
   test -e $output
   if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
     anaconda -t $ANACONDA_TOKEN upload --force -l dev $output;
   fi
+
+  cd ..
 
 done
