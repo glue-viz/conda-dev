@@ -28,10 +28,10 @@ def prepare_recipe(package):
         f.write(recipe)
 
 
+def main(*packages):
+    for package in packages:
+        prepare_recipe(package)
+
+
 if __name__ == "__main__":
-    prepare_recipe('glue-core')
-    prepare_recipe('glue-vispy-viewers')
-    prepare_recipe('glueviz')
-    prepare_recipe('glue-wwt')
-    #prepare_recipe('glue-medical')
-    #prepare_recipe('glue-geospatial')
+    main(*sys.argv[1:])
