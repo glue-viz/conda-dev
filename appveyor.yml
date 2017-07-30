@@ -23,15 +23,6 @@ install:
     - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
     - "activate test"
 
-    # Clone repositories
-    - "git clone git://github.com/glue-viz/glue.git glue-core"
-    - "git clone git://github.com/glue-viz/glue-vispy-viewers.git"
-    - "git clone git://github.com/glue-viz/glueviz.git"
-    - "git clone git://github.com/glue-viz/glue-wwt.git"
-
-    # The following puts the correct version numbers in the recipes
-    - "%CMD_IN_ENV% python prepare_recipes.py"
-
 # Not a .NET project, we build the package in the install step instead
 build: false
 

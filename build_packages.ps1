@@ -8,16 +8,29 @@ if ($env:ANACONDA_TOKEN -eq $null) {
 # Switch to root environment to have access to conda-build
 activate root
 
+# Install conda-build and the anaconda client
 conda install -n root conda-build=2 anaconda-client
+
+# Install PyQt and jinja2 for the prepare script to work
+conda install jinja2 pyqt
 
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
 
-cd recipes
-
 $packages = @("glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt")
 
 foreach ($package in $packages) {
+
+  if ($package -match "glue-core") {
+    git clone git://github.com/glue-viz/glue.git glue-core
+  } else {
+    git clone "git://github.com/glue-viz/"$package".git"
+  }
+
+  # The following puts the correct version number in the recipes
+  python prepare_recipe.py $package
+
+  cd recipes
 
   conda build --python $env:PYTHON_VERSION $package
   $BUILD_OUTPUT = cmd /c conda build --python $env:PYTHON_VERSION $package --output 2>&1
@@ -26,5 +39,7 @@ foreach ($package in $packages) {
   if ($env:APPVEYOR_PULL_REQUEST_NUMBER -eq $null -and $env:APPVEYOR_REPO_BRANCH -eq "master") {
     anaconda -t $env:ANACONDA_TOKEN upload --force -l dev $BUILD_OUTPUT;
   }
+
+  cd ..
 
 }
