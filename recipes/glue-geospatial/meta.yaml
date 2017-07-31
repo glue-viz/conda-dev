@@ -17,8 +17,12 @@ requirements:
 
   run:
     - python
-    - glueviz
+    - numpy
+    - astropy
+    - pyproj
     - rasterio
+    - affine
+    - glue-core >0.10.999
 
 test:
   imports:

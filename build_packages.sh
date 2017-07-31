@@ -12,9 +12,7 @@ conda install jinja2 pyqt
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
 
-export CONDA_BUILD="conda build --python $PYTHON_VERSION"
-
-packages=(glue-core glue-vispy-viewers glueviz glue-wwt)
+packages="glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial"
 
 for package in $packages; do
 
