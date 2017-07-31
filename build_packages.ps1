@@ -17,7 +17,8 @@ conda install jinja2 pyqt
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
 
-$packages = @("glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt")
+#$packages = @("glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial")
+$packages = @("glue-geospatial")
 
 foreach ($package in $packages) {
 
