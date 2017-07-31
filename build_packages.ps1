@@ -23,9 +23,9 @@ $packages = @("glue-geospatial")
 foreach ($package in $packages) {
 
   if ($package -match "glue-core") {
-    git clone git://github.com/glue-viz/glue.git glue-core
+    git clone http://github.com/glue-viz/glue glue-core
   } else {
-    git clone "git://github.com/glue-viz/"$package".git"
+    git clone "http://github.com/glue-viz/"$package
   }
 
   # The following puts the correct version number in the recipes
