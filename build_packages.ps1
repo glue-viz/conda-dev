@@ -45,8 +45,8 @@ foreach ($package in $packages) {
 
   cd recipes
 
-  conda build  --keep-old-work --python $env:PYTHON_VERSION $package
-  $BUILD_OUTPUT = cmd /c conda build --python $env:PYTHON_VERSION $package --output 2>&1
+  conda build  --keep-old-work --old-build-string --python $env:PYTHON_VERSION $package
+  $BUILD_OUTPUT = cmd /c conda build --old-build-string --python $env:PYTHON_VERSION $package --output 2>&1
   echo $BUILD_OUTPUT
 
   if ($env:APPVEYOR_PULL_REQUEST_NUMBER -eq $null -and $env:APPVEYOR_REPO_BRANCH -eq "master") {

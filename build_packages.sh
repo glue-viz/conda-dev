@@ -40,8 +40,8 @@ for package in $packages; do
 
   cd recipes
 
-  conda build  --keep-old-work --python $PYTHON_VERSION $package
-  output=`conda build --python $PYTHON_VERSION $package --output`
+  conda build --old-build-string --keep-old-work --python $PYTHON_VERSION $package
+  output=`conda build --old-build-string --python $PYTHON_VERSION $package --output`
   test -e $output
 
   if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
