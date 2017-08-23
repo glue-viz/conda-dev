@@ -4,7 +4,6 @@ import subprocess
 from datetime import datetime
 
 import requests
-from yaml import load, dump
 from jinja2 import Template
 
 
