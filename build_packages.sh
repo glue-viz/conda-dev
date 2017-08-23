@@ -14,11 +14,11 @@ conda config --set anaconda_upload no
 
 if [[ $STABLE == true ]]; then
   conda config --add channels glueviz
-  packages="glue-core glue-vispy-viewers glueviz";
 else
   conda config --add channels glueviz/label/dev
-  packages="glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial";
 fi
+
+packages="glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial";
 
 for package in $packages; do
 
