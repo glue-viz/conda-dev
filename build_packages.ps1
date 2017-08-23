@@ -12,7 +12,7 @@ activate root
 conda install -n root conda-build anaconda-client
 
 # Install PyQt and jinja2 for the prepare script to work
-conda install jinja2 pyqt
+conda install jinja2 pyqt requests
 
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
