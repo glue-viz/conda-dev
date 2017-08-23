@@ -17,7 +17,7 @@ conda install jinja2 pyqt requests
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
 
-if ($stable -match "true") {
+if ($env:STABLE -match "true") {
   $packages = @("glue-core", "glue-vispy-viewers", "glueviz")
 } else {
   $packages = @("glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt")
@@ -25,7 +25,7 @@ if ($stable -match "true") {
 
 foreach ($package in $packages) {
 
-  if ($stable -match "true") {
+  if ($env:STABLE -match "true") {
 
     # The following puts the correct version number and md5 in the recipes
     python prepare_recipe.py $package --stable
@@ -50,7 +50,7 @@ foreach ($package in $packages) {
   echo $BUILD_OUTPUT
 
   if ($env:APPVEYOR_PULL_REQUEST_NUMBER -eq $null -and $env:APPVEYOR_REPO_BRANCH -eq "master") {
-    if ($stable -match "true") {
+    if ($env:STABLE -match "true") {
       anaconda -t $env:ANACONDA_TOKEN upload $BUILD_OUTPUT;
     } else {
       anaconda -t $env:ANACONDA_TOKEN upload -l dev $BUILD_OUTPUT;
