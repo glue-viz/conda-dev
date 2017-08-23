@@ -13,8 +13,10 @@ conda install jinja2 pyqt requests
 conda config --set anaconda_upload no
 
 if [[ $STABLE == true ]]; then
+  conda_channel="glueviz"
   packages="glue-core glue-vispy-viewers glueviz";
 else
+  conda_channel="glueviz/label/dev"
   packages="glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial";
 fi
 
@@ -40,9 +42,14 @@ for package in $packages; do
 
   cd recipes
 
-  conda build --old-build-string --keep-old-work --python $PYTHON_VERSION $package
+  conda build -c $conda_channel --skip-existing --old-build-string --keep-old-work --python $PYTHON_VERSION $package
   output=`conda build --old-build-string --python $PYTHON_VERSION $package --output`
-  test -e $output
+
+  # If the file does not exist, the build must have skipped because the build
+  # already exists in the channel, so we just proceed to the next package
+  if [ ! -f $output ]; then
+    continue;
+  fi
 
   if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
     if [[ $STABLE == true ]]; then
