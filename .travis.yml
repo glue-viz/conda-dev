@@ -15,7 +15,7 @@ env:
     - PYTHON_VERSION=3.5 STABLE=true
     - PYTHON_VERSION=3.6 STABLE=true
   global:
-    - CONDA_DEPENDENCIES='jinja2 pyqt'
+    - CONDA_DEPENDENCIES='jinja2 pyqt requests'
 
 before_install:
 
