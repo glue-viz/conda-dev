@@ -17,9 +17,10 @@ conda install jinja2 pyqt requests
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
 
-if ($env:STABLE -match "true") {
-  conda config --add channels glueviz
-} else {
+# We add glueviz in all cases since it also contains e.g. rasterio and other packages
+conda config --add channels glueviz
+
+if ($env:STABLE -match "false") {
   conda config --add channels glueviz/label/dev
 }
 
