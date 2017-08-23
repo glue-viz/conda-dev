@@ -9,7 +9,7 @@ if ($env:ANACONDA_TOKEN -eq $null) {
 activate root
 
 # Install conda-build and the anaconda client
-conda install -n root conda-build=2 anaconda-client
+conda install -n root conda-build anaconda-client
 
 # Install PyQt and jinja2 for the prepare script to work
 conda install jinja2 pyqt

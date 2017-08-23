@@ -4,7 +4,7 @@
 source activate root
 
 # Install conda-build and the anaconda client
-conda install conda-build=2 anaconda-client
+conda install conda-build anaconda-client
 
 # Install PyQt and jinja2 for the prepare script to work
 conda install jinja2 pyqt
