@@ -53,7 +53,7 @@ foreach ($package in $packages) {
 
   # If the file does not exist, the build must have skipped because the build
   # already exists in the channel, so we just proceed to the next package
-  if (-not ($path | Test-Path)) {
+  if (-not ($BUILD_OUTPUT | Test-Path)) {
     cd ..
     continue
   }
