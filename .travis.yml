@@ -3,8 +3,8 @@ language: c
 sudo: false
 
 os:
-    - osx
     - linux
+    - osx
 
 env:
   matrix:
