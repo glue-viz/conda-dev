@@ -45,7 +45,7 @@ foreach ($package in $packages) {
 
   cd recipes
 
-  conda build --python $env:PYTHON_VERSION $package
+  conda build  --keep-old-work --python $env:PYTHON_VERSION $package
   $BUILD_OUTPUT = cmd /c conda build --python $env:PYTHON_VERSION $package --output 2>&1
   echo $BUILD_OUTPUT
 

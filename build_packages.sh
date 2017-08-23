@@ -40,7 +40,7 @@ for package in $packages; do
 
   cd recipes
 
-  conda build --python $PYTHON_VERSION $package
+  conda build  --keep-old-work --python $PYTHON_VERSION $package
   output=`conda build --python $PYTHON_VERSION $package --output`
   test -e $output
 

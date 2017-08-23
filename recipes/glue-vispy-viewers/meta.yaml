@@ -18,7 +18,7 @@ requirements:
     - python
     - numpy
     - pyopengl
-    - glue-core >=0.10
+    - glue-core >=0.11
     - matplotlib
     - qtpy
     - pyqt 4.11.*|5.6.*
