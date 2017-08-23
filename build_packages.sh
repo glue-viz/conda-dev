@@ -48,6 +48,7 @@ for package in $packages; do
   # If the file does not exist, the build must have skipped because the build
   # already exists in the channel, so we just proceed to the next package
   if [ ! -f $output ]; then
+    cd ..
     continue;
   fi
 
