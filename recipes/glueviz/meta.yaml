@@ -9,8 +9,7 @@ package:
   name: glueviz
   version: {{version}}
 
-source:
-  path: ../../glueviz
+{{source}}
 
 build:
   number: 0
@@ -18,11 +17,9 @@ build:
 
 requirements:
 
-  # Note that we can't do >=0.11 and >=0.8 here because 0.11.dev counts as less than
-  # 0.11 for example, so we use .999 instead as a workaround.
   run:
-    - glue-core >0.10.999
-    - glue-vispy-viewers >=0.7.999
+    - glue-core >=0.11
+    - glue-vispy-viewers >=0.8
 
 test:
   commands:

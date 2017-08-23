@@ -2,8 +2,7 @@ package:
   name: glue-geospatial
   version: {{version}}
 
-source:
-  path: ../../glue-geospatial
+{{source}}
 
 build:
   number: 0
