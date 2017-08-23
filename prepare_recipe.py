@@ -8,6 +8,19 @@ from yaml import load, dump
 from jinja2 import Template
 
 
+SOURCE_DEV = """
+source:
+  path: ../../{{package}}
+"""
+
+SOURCE_STABLE = """
+source:
+  fn: {{filename}}
+  url: {{url}}
+  md5: {{md5_digest}}
+"""
+
+
 def prepare_recipe_dev(package):
 
     with open('recipes/{0}/meta.yaml'.format(package)) as f:
@@ -25,7 +38,9 @@ def prepare_recipe_dev(package):
 
     version = overall_version + '.dev' + stamp + '.' + chash
 
-    recipe = Template(content).render(version=version)
+    source = Template(SOURCE_DEV).render(package=package)
+
+    recipe = Template(content).render(version=version, source=source)
 
     with open('recipes/{0}/meta.yaml'.format(package), 'w') as f:
         f.write(recipe)
@@ -46,17 +61,12 @@ def prepare_recipe_stable(package):
     else:
         raise Exception("Cannot find source package for {0}".format(package))
 
-    recipe = Template(content).render(version=version)
+    source = Template(SOURCE_STABLE).render(**release)
 
-    # Parse YAML
-    recipe_yaml = load(recipe)
-    recipe_yaml['source'].pop('path')
-    recipe_yaml['source']['fn'] = release['filename']
-    recipe_yaml['source']['url'] = release['url']
-    recipe_yaml['source']['md5'] = release['md5_digest']
+    recipe = Template(content).render(version=version, source=source)
 
     with open('recipes/{0}/meta.yaml'.format(package), 'w') as f:
-        f.write(dump(recipe_yaml, default_flow_style=False))
+        f.write(recipe)
 
 
 def main_stable(*packages):

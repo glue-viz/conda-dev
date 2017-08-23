@@ -2,8 +2,7 @@ package:
   name: glue-medical
   version: {{version}}
 
-source:
-  path: ../../glue-medical
+{{source}}
 
 build:
   number: 0

@@ -2,8 +2,7 @@ package:
   name: glue-wwt
   version: {{version}}
 
-source:
-  path: ../../glue-wwt
+{{source}}
 
 build:
   number: 0

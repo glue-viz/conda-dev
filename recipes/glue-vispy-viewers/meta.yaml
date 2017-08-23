@@ -2,8 +2,7 @@ package:
   name: glue-vispy-viewers
   version: {{version}}
 
-source:
-  path: ../../glue-vispy-viewers
+{{source}}
 
 build:
   number: 0

@@ -2,8 +2,7 @@ package:
   name: glue-core
   version: {{version}}
 
-source:
-  path: ../../glue-core
+{{source}}
 
 build:
   number: 0

@@ -46,9 +46,9 @@ for package in $packages; do
 
   if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
     if [[ $STABLE == true ]]; then
-      anaconda -t $ANACONDA_TOKEN upload -l dev $output;
-    else
       anaconda -t $ANACONDA_TOKEN upload $output;
+    else
+      anaconda -t $ANACONDA_TOKEN upload -l dev $output;
     fi
   fi
 

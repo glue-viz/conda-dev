@@ -9,8 +9,7 @@ package:
   name: glueviz
   version: {{version}}
 
-source:
-  path: ../../glueviz
+{{source}}
 
 build:
   number: 0
