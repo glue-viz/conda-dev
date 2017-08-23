@@ -52,7 +52,7 @@ def prepare_recipe_stable(package):
         content = f.read()
 
     # Find latest stable version from PyPI
-    package_json = requests.get('https://pypi.python.org/pypi/glue-core/json').json()
+    package_json = requests.get('https://pypi.python.org/pypi/{package}/json'.format(package=package)).json()
     version = sorted(package_json['releases'])[-1]
     releases = package_json['releases'][version]
     for release in releases:
