@@ -12,7 +12,7 @@ activate root
 conda install -n root conda-build anaconda-client
 
 # Install PyQt and jinja2 for the prepare script to work
-conda install jinja2 pyqt requests
+conda install jinja2 pyqt requests git
 
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
@@ -38,7 +38,7 @@ foreach ($package in $packages) {
     if ($package -match "glue-core") {
       git clone git://github.com/glue-viz/glue.git glue-core
     } else {
-      git clone "git://github.com/glue-viz/"$package".git" $package
+      git clone "git://github.com/glue-viz/"$package".git"
     }
 
     # The following puts the correct version number in the recipes
