@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/glue-viz/conda-dev.svg?branch=master)](https://travis-ci.org/glue-viz/conda-dev)
+[![Travis Status](https://travis-ci.org/glue-viz/conda-dev.svg?branch=master)](https://travis-ci.org/glue-viz/conda-dev)
+[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/bfihtv4r0aus46at/branch/master?svg=true)](https://ci.appveyor.com/project/glue-viz/conda-dev/branch/master)
 
 ### About
 
