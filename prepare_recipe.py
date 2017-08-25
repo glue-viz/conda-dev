@@ -25,7 +25,16 @@ def prepare_recipe_dev(package):
     with open('recipes/{0}/meta.yaml'.format(package)) as f:
         content = f.read()
 
-    os.chdir(package)
+    if os.path.exists(package):
+        os.chdir(package)
+        package_dir = package
+    elif os.path.exists(package + '.git'):
+        os.chdir(package + '.git')
+        package_dir = package + '.git'
+    else:
+        print('Package {0} not cloned'.format(package))
+        sys.exit(1)
+
     overall_version = subprocess.check_output('python setup.py --version', shell=True).decode('ascii')
     utime = subprocess.check_output('git log -1 --pretty=format:%ct', shell=True).decode('ascii')
     chash = subprocess.check_output('git log -1 --pretty=format:%h', shell=True).decode('ascii')
@@ -37,7 +46,7 @@ def prepare_recipe_dev(package):
 
     version = overall_version + '.dev' + stamp + '.' + chash
 
-    source = Template(SOURCE_DEV).render(package=package)
+    source = Template(SOURCE_DEV).render(package=package_dir)
 
     recipe = Template(content).render(version=version, source=source)
 
