@@ -11,12 +11,15 @@ environment:
       - PYTHON_VERSION: "2.7"
         STABLE: true
         PYTHON_ARCH: "32"
+        TARGET_ARCH: "x86"
       - PYTHON_VERSION: "3.5"
         STABLE: true
         PYTHON_ARCH: "32"
+        TARGET_ARCH: "x86"
       - PYTHON_VERSION: "3.6"
         STABLE: true
         PYTHON_ARCH: "32"
+        TARGET_ARCH: "x86"
       #- PYTHON_VERSION: "2.7"
       #  STABLE: true
       #- PYTHON_VERSION: "3.5"
