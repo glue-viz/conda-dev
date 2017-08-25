@@ -79,7 +79,6 @@ def main_dev(*packages):
 
 
 if __name__ == "__main__":
-
     if '--stable' in sys.argv:
         sys.argv.remove('--stable')
         main_stable(*sys.argv[1:])
