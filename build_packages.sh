@@ -19,7 +19,7 @@ if [[ $STABLE == false ]]; then
   conda config --add channels glueviz/label/dev
 fi
 
-packages="glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial";
+packages="glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
 
 for package in $packages; do
 
