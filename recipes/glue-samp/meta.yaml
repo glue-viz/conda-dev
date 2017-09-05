@@ -19,7 +19,7 @@ requirements:
     - numpy
     - qtpy
     - glue-core >=0.11
-    - astropy >=2.0
+    - astropy
 
 test:
   imports:
