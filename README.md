@@ -24,4 +24,6 @@ This repository is used to build nightly 'developer' versions of the various glu
 |**glue-core**: | [![Anaconda-Server Badge](https://anaconda.org/glueviz/glue-core/badges/version.svg)](https://anaconda.org/glueviz/glue-core) |
 |**glue-vispy-viewers**: | [![Anaconda-Server Badge](https://anaconda.org/glueviz/glue-vispy-viewers/badges/version.svg)](https://anaconda.org/glueviz/glue-vispy-viewers) |
 |**glue-wwt**: | [![Anaconda-Server Badge](https://anaconda.org/glueviz/glue-wwt/badges/version.svg)](https://anaconda.org/glueviz/glue-wwt) |
+|**glue-geospatial**: | [![Anaconda-Server Badge](https://anaconda.org/glueviz/glue-geospatial/badges/version.svg)](https://anaconda.org/glueviz/glue-geospatial) |
+|**glue-samp**: | [![Anaconda-Server Badge](https://anaconda.org/glueviz/glue-samp/badges/version.svg)](https://anaconda.org/glueviz/glue-samp) |
 |**glueviz**: | [![Anaconda-Server Badge](https://anaconda.org/glueviz/glueviz/badges/version.svg)](https://anaconda.org/glueviz/glueviz) |
