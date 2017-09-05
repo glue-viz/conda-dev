@@ -1,0 +1,35 @@
+package:
+  name: glue-samp
+  version: {{version}}
+
+{{source}}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - numpy
+    - qtpy
+    - glue-core >=0.11
+    - astropy
+
+test:
+  imports:
+    - glue_samp.menubar
+
+about:
+  home: https://github.com/glue-viz/glue-samp
+  license: BSD 3-Clause
+  summary: SAMP plugin for glue
+
+extra:
+  recipe-maintainers:
+    - astrofrog
