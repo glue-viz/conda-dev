@@ -17,7 +17,7 @@ This repository is used to build nightly 'developer' versions of the various glu
         glue-vispy-viewers: 0.8.dev20170602171439.7533769-py36_0    glueviz/label/dev
         glueviz:            0.10.4.dev20170523215155.bd41d10-0      glueviz/label/dev
 
-### Versions on anaconda.org
+### Versions on http://anaconda.org
 
 | **Package** | **Latest Version** |
 | --- | --- |
