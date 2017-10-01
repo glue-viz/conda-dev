@@ -1,0 +1,35 @@
+package:
+  name: glue-exp
+  version: {{version}}
+
+{{source}}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - numpy
+    - astropy
+    - requests
+    - glue-core >=0.11
+
+test:
+  imports:
+    - glue_exp
+
+about:
+  home: https://github.com/glue-viz/glue-exp
+  license: BSD 3-Clause
+  summary: Experimental plugins for glue
+
+extra:
+  recipe-maintainers:
+    - astrofrog
