@@ -24,7 +24,11 @@ if ($env:STABLE -match "false") {
   conda config --add channels glueviz/label/dev
 }
 
-$packages = @("glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
+if ($env:STABLE -match "false") {
+  $packages = @("glue-exp", "glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
+} else {
+  $packages = @("glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
+}
 
 foreach ($package in $packages) {
 
