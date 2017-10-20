@@ -20,7 +20,7 @@ if [[ $STABLE == false ]]; then
 fi
 
 if [[ $STABLE == false ]]; then
-  packages="glue-exp glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
+  packages="glue-core glue-exp glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
 else
   packages="glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
 fi
