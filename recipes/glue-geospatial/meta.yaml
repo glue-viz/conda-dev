@@ -16,7 +16,10 @@ requirements:
 
   run:
     - python
-    - numpy
+    # Numpy needs to be pinned to 1.12 (the latest version that
+    # there is a rasterio package for) otherwise there is a
+    # conflict according to conda
+    - numpy 1.12.*
     - astropy
     - pyproj
     - rasterio
