@@ -18,8 +18,8 @@ build:
 requirements:
 
   run:
-    - glue-core >=0.11
-    - glue-vispy-viewers >=0.8
+    - glue-core >=0.12
+    - glue-vispy-viewers >=0.9
 
 test:
   commands:
