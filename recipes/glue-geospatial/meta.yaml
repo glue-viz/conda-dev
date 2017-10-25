@@ -21,7 +21,7 @@ requirements:
     - pyproj
     - rasterio
     - affine
-    - glue-core >=0.11
+    - glue-core >=0.12
 
 test:
   imports:
