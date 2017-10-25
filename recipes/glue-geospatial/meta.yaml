@@ -26,6 +26,8 @@ requirements:
 test:
   imports:
     - glue_geospatial
+    - glue_geospatial.data_factory
+    - glue_geospatial.coordinates
 
 about:
   home: https://github.com/glue-viz/glue-geospatial
