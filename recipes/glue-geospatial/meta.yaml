@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 1
+  number: 2
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -26,8 +26,15 @@ requirements:
     - affine
     - glue-core >=0.12
 
+    # Pin version of the jpeg library to avoid issues on MacOS X
+    # where libgdal appears to be built against jpeg 8 but doesn't
+    # declare that pinning, causing issues now that jpeg 9 is
+    # available.
+    - jpeg 8*  # [osx]
+
 test:
   imports:
+    - rasterio
     - glue_geospatial
     - glue_geospatial.data_factory
     - glue_geospatial.coordinates
