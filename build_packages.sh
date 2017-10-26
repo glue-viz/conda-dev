@@ -47,7 +47,15 @@ for package in $packages; do
 
   cd recipes
 
-  conda build --skip-existing --old-build-string --keep-old-work --python $PYTHON_VERSION $package
+  # If we are processing a pull request, we shouldn't skip builds even if they
+  # exist already otherwise some builds might not get tested
+  if [[ $TRAVIS_EVENT_TYPE != pull_request ]]; then
+    skip="--skip-existing"
+  else
+    skip="";
+  fi
+
+  conda build $skip --old-build-string --keep-old-work --python $PYTHON_VERSION $package
   output=`conda build --old-build-string --python $PYTHON_VERSION $package --output`
 
   # If the file does not exist, the build must have skipped because the build
