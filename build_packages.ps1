@@ -25,9 +25,9 @@ if ($env:STABLE -match "false") {
 }
 
 if ($env:STABLE -match "false") {
-  $packages = @("glue-core", "glue-exp", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
+  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
 } else {
-  $packages = @("glue-core", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
+  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
 }
 
 foreach ($package in $packages) {
