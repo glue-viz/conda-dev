@@ -52,7 +52,15 @@ foreach ($package in $packages) {
 
   cd recipes
 
-  conda build --skip-existing --old-build-string --keep-old-work --python $env:PYTHON_VERSION $package
+  # If we are processing a pull request, we shouldn't skip builds even if they
+  # exist already otherwise some builds might not get tested
+  if ($env:APPVEYOR_PULL_REQUEST_NUMBER -eq $null) {
+    skip = "--skip-existing"
+  } else {
+    skip = ""
+  }
+
+  conda build $skip --old-build-string --keep-old-work --python $env:PYTHON_VERSION $package
   $BUILD_OUTPUT = cmd /c conda build --old-build-string --python $env:PYTHON_VERSION $package --output 2>&1
   echo $BUILD_OUTPUT
 
