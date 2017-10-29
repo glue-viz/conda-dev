@@ -39,6 +39,7 @@ requirements:
     - dill >=0.2
     - xlrd >=1.0
     - h5py >=2.4
+    - mpl-scatter-density >=0.3
     - setuptools >=1.0
     - pyqt 4.11.*|5.6.*
 
