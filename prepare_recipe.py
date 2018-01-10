@@ -50,7 +50,9 @@ def prepare_recipe_dev(package):
 
     recipe = Template(content).render(version=version, source=source)
 
-    with open('recipes/{0}/meta.yaml'.format(package), 'w') as f:
+    os.makedirs('generated/{0}'.format(package), exist_ok=True)
+
+    with open('generated/{0}/meta.yaml'.format(package), 'w') as f:
         f.write(recipe)
 
 
@@ -73,7 +75,9 @@ def prepare_recipe_stable(package):
 
     recipe = Template(content).render(version=version, source=source)
 
-    with open('recipes/{0}/meta.yaml'.format(package), 'w') as f:
+    os.makedirs('generated/{0}'.format(package), exist_ok=True)
+
+    with open('generated/{0}/meta.yaml'.format(package), 'w') as f:
         f.write(recipe)
 
 

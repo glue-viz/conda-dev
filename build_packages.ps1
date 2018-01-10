@@ -50,7 +50,7 @@ foreach ($package in $packages) {
 
   }
 
-  cd recipes
+  cd generated
 
   # If we are processing a pull request, we shouldn't skip builds even if they
   # exist already otherwise some builds might not get tested
