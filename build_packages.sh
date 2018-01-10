@@ -1,5 +1,14 @@
 #!/bin/bash -xe
 
+# Determine whether build products should be uploaded
+if [[ $TRAVIS == true && $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
+  UPLOAD=true;
+elif [[ $CIRCLECI == true && $CIRCLE_BRANCH == master ]]; then
+  UPLOAD=true;
+else
+  UPLOAD=false;
+fi
+
 # Switch to root environment to have access to conda-build
 source activate root
 
@@ -65,7 +74,7 @@ for package in $packages; do
     continue;
   fi
 
-  if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == master ]]; then
+  if [[ $UPLOAD == true ]]; then
     if [[ $STABLE == true ]]; then
       anaconda -t $ANACONDA_TOKEN upload $output;
     else
