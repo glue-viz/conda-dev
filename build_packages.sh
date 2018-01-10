@@ -82,10 +82,12 @@ for package in $packages; do
 
   if [[ $UPLOAD == true ]]; then
     if [[ $STABLE == true ]]; then
-      anaconda -t $ANACONDA_TOKEN upload --force $output;
+      anaconda -t $ANACONDA_TOKEN upload $output;
     else
-      anaconda -t $ANACONDA_TOKEN upload -l dev --force $output;
+      anaconda -t $ANACONDA_TOKEN upload -l dev $output;
     fi
   fi
+
+  rm $output
 
 done
