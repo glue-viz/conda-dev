@@ -67,6 +67,8 @@ for package in $packages; do
   conda build $skip --old-build-string --keep-old-work --python $PYTHON_VERSION $package
   output=`conda build --old-build-string --python $PYTHON_VERSION $package --output`
 
+  cd ..
+
   # Remove git repository
   if [[ $STABLE == false ]]; then
     rm -rf $package
@@ -75,7 +77,6 @@ for package in $packages; do
   # If the file does not exist, the build must have skipped because the build
   # already exists in the channel, so we just proceed to the next package
   if [ ! -f $output ]; then
-    cd ..
     continue;
   fi
 
@@ -86,7 +87,5 @@ for package in $packages; do
       anaconda -t $ANACONDA_TOKEN upload -l dev $output;
     fi
   fi
-
-  cd ..
 
 done
