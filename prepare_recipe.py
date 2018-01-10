@@ -1,5 +1,6 @@
 import os
 import sys
+import shutil
 import subprocess
 from datetime import datetime
 
@@ -22,7 +23,7 @@ source:
 
 def prepare_recipe_dev(package):
 
-    with open('recipes/{0}/meta.yaml'.format(package)) as f:
+    with open(os.path.join('recipes', package, 'meta.yaml')) as f:
         content = f.read()
 
     if os.path.exists(package):
@@ -50,15 +51,20 @@ def prepare_recipe_dev(package):
 
     recipe = Template(content).render(version=version, source=source)
 
-    os.makedirs('generated/{0}'.format(package), exist_ok=True)
+    os.makedirs(os.path.join('generated', package), exist_ok=True)
 
-    with open('generated/{0}/meta.yaml'.format(package), 'w') as f:
+    with open(os.path.join('generated', package, 'meta.yaml'), 'w') as f:
         f.write(recipe)
+
+    for filename in os.listdir(os.path.join('recipes', package)):
+        if filename != 'meta.yaml':
+            shutil.copyfile(os.path.join('recipes', package, filename),
+                            os.path.join('generated', package, filename))
 
 
 def prepare_recipe_stable(package):
 
-    with open('recipes/{0}/meta.yaml'.format(package)) as f:
+    with open(os.path.join('recipes', package, 'meta.yaml')) as f:
         content = f.read()
 
     # Find latest stable version from PyPI
@@ -75,10 +81,15 @@ def prepare_recipe_stable(package):
 
     recipe = Template(content).render(version=version, source=source)
 
-    os.makedirs('generated/{0}'.format(package), exist_ok=True)
+    os.makedirs(os.path.join('generated', package), exist_ok=True)
 
-    with open('generated/{0}/meta.yaml'.format(package), 'w') as f:
+    with open(os.path.join('generated', package, 'meta.yaml'), 'w') as f:
         f.write(recipe)
+
+    for filename in os.listdir(os.path.join('recipes', package)):
+        if filename != 'meta.yaml':
+            shutil.copyfile(os.path.join('recipes', package, filename),
+                            os.path.join('generated', package, filename))
 
 
 def main_stable(*packages):
