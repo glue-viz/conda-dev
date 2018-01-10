@@ -1,0 +1,21 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: continuumio/miniconda3
+    steps:
+      - checkout
+      - run:
+          name: Installing OpenGL
+          command: |
+            apt update
+            apt -y install libgl1-mesa-swx11
+      - run:
+          name: Conda setup
+          command: |
+            conda config --set always_yes yes --set changeps1 no
+            conda install jinja2 pyqt requests
+      - run:
+          name: Build packages
+          command: ./build_all.sh
