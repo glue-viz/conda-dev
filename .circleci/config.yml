@@ -12,6 +12,10 @@ jobs:
             apt update
             apt -y install libgl1-mesa-swx11
       - run:
+          name: Installing Gtk2
+          command: |
+            apt -y install libgtk2.0-dev
+      - run:
           name: Conda setup
           command: |
             conda config --set always_yes yes --set changeps1 no
