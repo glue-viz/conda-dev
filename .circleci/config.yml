@@ -16,6 +16,7 @@ jobs:
           command: |
             conda config --set always_yes yes --set changeps1 no
             conda install jinja2 pyqt requests
+            conda config --add channels conda-forge
       - run:
           name: Build packages
           command: ./build_all.sh
