@@ -23,3 +23,16 @@ jobs:
       - run:
           name: Build packages
           command: ./build_all.sh
+
+workflows:
+   version: 2
+   nightly:
+     triggers:
+       - schedule:
+           cron: "0 0 * * *"
+           filters:
+             branches:
+               only:
+                 - master
+     jobs:
+       - build
