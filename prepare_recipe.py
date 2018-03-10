@@ -51,7 +51,11 @@ def prepare_recipe_dev(package):
 
     recipe = Template(content).render(version=version, source=source)
 
-    os.makedirs(os.path.join('generated', package), exist_ok=True)
+    if not os.path.exists('generated'):
+        os.mkdir('generated')
+
+    if not os.path.exists(os.path.join('generated', package)):
+        os.mkdir(os.path.join('generated', package))
 
     with open(os.path.join('generated', package, 'meta.yaml'), 'w') as f:
         f.write(recipe)
@@ -81,7 +85,11 @@ def prepare_recipe_stable(package):
 
     recipe = Template(content).render(version=version, source=source)
 
-    os.makedirs(os.path.join('generated', package), exist_ok=True)
+    if not os.path.exists('generated'):
+        os.mkdir('generated')
+
+    if not os.path.exists(os.path.join('generated', package)):
+        os.mkdir(os.path.join('generated', package))
 
     with open(os.path.join('generated', package, 'meta.yaml'), 'w') as f:
         f.write(recipe)
