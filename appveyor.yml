@@ -7,6 +7,9 @@ environment:
       PYTHON_ARCH: "64"
       CONDA_DEPENDENCIES: "jinja2 pyqt requests"
 
+  matrix:
+      - PYTHON_VERSION: "3.6"
+
 platform:
     -x64
 

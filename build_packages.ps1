@@ -60,7 +60,7 @@ foreach ($package in $packages) {
       git clone git://github.com/glue-viz/glue.git glue-core
       checkLastExitCode
     } else {
-      git clone "git://github.com/glue-viz/"$package".git"
+      git clone "git://github.com/glue-viz/$package"
       checkLastExitCode
     }
 
