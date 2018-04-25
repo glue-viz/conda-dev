@@ -7,20 +7,6 @@ environment:
       PYTHON_ARCH: "64"
       CONDA_DEPENDENCIES: "jinja2 pyqt requests"
 
-  matrix:
-      - PYTHON_VERSION: "2.7"
-        STABLE: true
-      - PYTHON_VERSION: "3.5"
-        STABLE: true
-      - PYTHON_VERSION: "3.6"
-        STABLE: true
-      - PYTHON_VERSION: "2.7"
-        STABLE: false
-      - PYTHON_VERSION: "3.5"
-        STABLE: false
-      - PYTHON_VERSION: "3.6"
-        STABLE: false
-
 platform:
     -x64
 
@@ -36,4 +22,4 @@ install:
 build: false
 
 test_script:
-    - "powershell ./build_packages.ps1"
+    - "powershell ./build_all.ps1"
