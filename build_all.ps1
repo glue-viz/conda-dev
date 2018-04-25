@@ -6,30 +6,33 @@ function checkLastExitCode {
   }
 }
 
+# Show which commands are being run
+Set-PSDebug -Trace 1
+
 $env:STABLE = true
 
 $env:PYTHON_VERSION = 2.7
-& ((Split-Path $MyInvocation.InvocationName) + "\build_pacakges.ps1")
+& ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
 checkLastExitCode
 
 $env:PYTHON_VERSION = 3.5
-& ((Split-Path $MyInvocation.InvocationName) + "\build_pacakges.ps1")
+& ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
 checkLastExitCode
 
 $env:PYTHON_VERSION = 3.6
-& ((Split-Path $MyInvocation.InvocationName) + "\build_pacakges.ps1")
+& ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
 checkLastExitCode
 
 $env:STABLE = false
 
 $env:PYTHON_VERSION = 2.7
-& ((Split-Path $MyInvocation.InvocationName) + "\build_pacakges.ps1")
+& ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
 checkLastExitCode
 
 $env:PYTHON_VERSION = 3.5
-& ((Split-Path $MyInvocation.InvocationName) + "\build_pacakges.ps1")
+& ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
 checkLastExitCode
 
 $env:PYTHON_VERSION = 3.6
-& ((Split-Path $MyInvocation.InvocationName) + "\build_pacakges.ps1")
+& ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
 checkLastExitCode
