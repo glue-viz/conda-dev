@@ -43,11 +43,11 @@ if ($env:STABLE -match "false") {
 
 if ($env:STABLE -match "false") {
   # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
-  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt")
+  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial")
   checkLastExitCode
 } else {
   # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
-  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt")
+  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial")
   checkLastExitCode
 }
 
