@@ -21,10 +21,10 @@ requirements:
     - glue-core >=0.12
     - glue-vispy-viewers >=0.9
 
-test:
-  commands:
-    - glue --version
-    - glue-deps list
+# test:
+#   commands:
+#     - glue --version
+#     - glue-deps list
 
 app:
   entry: glue
