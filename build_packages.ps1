@@ -119,6 +119,4 @@ foreach ($package in $packages) {
     }
   }
 
-  cd ..
-
 }
