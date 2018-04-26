@@ -9,6 +9,9 @@ function checkLastExitCode {
 # Show which commands are being run
 Set-PSDebug -Trace 1
 
+# Print out environment variables
+Get-ChildItem Env:
+
 if ($env:ANACONDA_TOKEN -eq $null) {
   echo "WARNING: ANACONDA_TOKEN is not set"
 }
