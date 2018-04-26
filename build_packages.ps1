@@ -96,10 +96,16 @@ foreach ($package in $packages) {
 
   echo $BUILD_OUTPUT
 
+  cd ..
+
+  # Remove git repository
+  if ($env:STABLE -match "false") {
+    Remove-Item $package -Force -Recurse
+  }
+
   # If the file does not exist, the build must have skipped because the build
   # already exists in the channel, so we just proceed to the next package
   if (-not ($BUILD_OUTPUT | Test-Path)) {
-    cd ..
     continue
   }
 
