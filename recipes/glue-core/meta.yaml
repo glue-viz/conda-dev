@@ -18,7 +18,11 @@ requirements:
   build:
     - python
     - setuptools
-    - pyqt >=5.6
+
+    # PyQt 5.9 appears to have issues when used in CircleCI
+    # https://github.com/ContinuumIO/anaconda-issues/issues/9270
+    - pyqt >=5.6  # [not linux]
+    - pyqt 5.6.*  # [linux]
 
   run:
 
@@ -42,8 +46,11 @@ requirements:
     - bottleneck >=1.2
     - mpl-scatter-density >=0.3
     - setuptools >=1.0
-    - pyqt >=5.6
 
+    # PyQt 5.9 appears to have issues when used in CircleCI
+    # https://github.com/ContinuumIO/anaconda-issues/issues/9270
+    - pyqt >=5.6  # [not linux]
+    - pyqt 5.6.*  # [linux]
 
     # Optional dependencies (defined in ``extras_require``)
     - scipy
