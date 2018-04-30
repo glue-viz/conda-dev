@@ -1,0 +1,58 @@
+package:
+  name: specviz
+  version: {{version}}
+
+{{source}}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  entry_points:
+    - specviz = specviz.app:main
+
+requirements:
+  build:
+    - astropy
+    - cython
+    - specutils <=0.2.2
+    - py-expression-eval
+    - pyyaml
+    - pyqtgraph >=0.9.11
+    - pyqt
+    - qtpy
+    - scipy
+    - spectral-cube
+    - yaml
+    - setuptools
+    - six
+    - numpy
+    - python
+
+  run:
+    - astropy
+    - cython
+    - specutils <=0.2.2
+    - py-expression-eval
+    - pyyaml
+    - pyqtgraph >=0.9.11
+    - pyqt
+    - qtpy
+    - scipy
+    - spectral-cube
+    - yaml
+    - setuptools
+    - six
+    - numpy
+    - python
+
+test:
+  imports:
+    - specviz
+
+about:
+  home: https://github.com/spacetelescope/specviz
+  license: BSD
+
+test:
+  imports:
+    - specviz

@@ -20,6 +20,12 @@ source:
   md5: {{md5_digest}}
 """
 
+SOURCE_STABLE_GIT = """
+source:
+    git_tag: {{version}}
+    git_url: https://github.com/spacetelescope/{{package}}.git
+"""
+
 
 def prepare_recipe_dev(package):
 
@@ -100,9 +106,42 @@ def prepare_recipe_stable(package):
                             os.path.join('generated', package, filename))
 
 
+def prepare_recipe_stable_git(package):
+
+    with open(os.path.join('recipes', package, 'meta.yaml')) as f:
+        content = f.read()
+
+    # Find latest stable version from PyPI
+    package_json = requests.get('https://api.github.com/repos/spacetelescope/{package}/tags'.format(package=package)).json()
+    version = package_json[0]['name']
+
+    source = Template(SOURCE_STABLE_GIT).render(version=version, package=package)
+
+    recipe = Template(content).render(version=version, source=source)
+
+    if not os.path.exists('generated'):
+        os.mkdir('generated')
+
+    if not os.path.exists(os.path.join('generated', package)):
+        os.mkdir(os.path.join('generated', package))
+
+    with open(os.path.join('generated', package, 'meta.yaml'), 'w') as f:
+        f.write(recipe)
+
+    for filename in os.listdir(os.path.join('recipes', package)):
+        if filename != 'meta.yaml':
+            shutil.copyfile(os.path.join('recipes', package, filename),
+                            os.path.join('generated', package, filename))
+
+
 def main_stable(*packages):
     for package in packages:
         prepare_recipe_stable(package)
+
+
+def main_stable_git(*packages):
+    for package in packages:
+        prepare_recipe_stable_git(package)
 
 
 def main_dev(*packages):
@@ -114,5 +153,8 @@ if __name__ == "__main__":
     if '--stable' in sys.argv:
         sys.argv.remove('--stable')
         main_stable(*sys.argv[1:])
+    elif '--stable-git' in sys.argv:
+        sys.argv.remove('--stable-git')
+        main_stable_git(*sys.argv[1:])
     else:
         main_dev(*sys.argv[1:])
