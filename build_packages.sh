@@ -31,7 +31,7 @@ fi
 if [[ $STABLE == false ]]; then
   packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp glue-exp";
 else
-  packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
+  packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp py-expression-eval specviz cubeviz";
 fi
 
 for package in $packages; do
@@ -39,12 +39,20 @@ for package in $packages; do
   if [[ $STABLE == true ]]; then
 
     # The following puts the correct version number and md5 in the recipes
-    python prepare_recipe.py $package --stable;
+    if [[ $package == specviz || $package == cubeviz ]]; then
+      python prepare_recipe.py $package --stable-git;
+    else
+      python prepare_recipe.py $package --stable;
+    fi
 
   else
 
     if [[ $package == glue-core ]]; then
       git clone git://github.com/glue-viz/glue.git glue-core;
+    elif [[ $package == py-expression-eval ]]; then
+      git clone "git://github.com/Axiacore/"$package".git"
+    elif [[ $package == specviz || $package == cubeviz ]]; then
+      git clone "git://github.com/spacetelescope/"$package".git"
     else
       git clone "git://github.com/glue-viz/"$package".git"
     fi
