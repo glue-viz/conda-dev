@@ -17,8 +17,8 @@ requirements:
     - specutils <=0.2.2
     - py-expression-eval
     - pyyaml
-    - pyqtgraph >=0.9.11
-    - pyqt
+    - pyqtgraph >=0.10.0
+    - pyqt >=5.6
     - qtpy
     - scipy
     - spectral-cube
@@ -34,8 +34,8 @@ requirements:
     - specutils <=0.2.2
     - py-expression-eval
     - pyyaml
-    - pyqtgraph >=0.9.11
-    - pyqt
+    - pyqtgraph >=0.10.0
+    - pyqt >=5.6
     - qtpy
     - scipy
     - spectral-cube
