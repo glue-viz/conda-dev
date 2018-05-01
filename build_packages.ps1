@@ -64,8 +64,13 @@ foreach ($package in $packages) {
   if ($env:STABLE -match "true") {
 
     # The following puts the correct version number and md5 in the recipes
-    python prepare_recipe.py $package --stable
-    checkLastExitCode
+    if ($package -match "specviz" -Or $package -match "cubeviz") {
+      python prepare_recipe.py $package --stable-git
+      checkLastExitCode
+    } else {
+      python prepare_recipe.py $package --stable
+      checkLastExitCode
+    }
 
   } else {
 
