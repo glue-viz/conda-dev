@@ -28,7 +28,7 @@ if [[ $STABLE == false ]]; then
   conda config --add channels glueviz/label/dev
 fi
 
-packages="py-expression-eval";
+packages="py-expression-eval specviz";
 # if [[ $STABLE == false ]]; then
 #   packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp glue-exp";
 # else
