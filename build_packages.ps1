@@ -41,17 +41,23 @@ if ($env:STABLE -match "false") {
   checkLastExitCode
 }
 
-if ($env:STABLE -match "false") {
-  # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
-  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt")
+if ($env:PYTHON_VERSION -match "2.7") {
+  $packages = @("py-expression-eval", "specviz")
 } else {
-  # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
-  if ($env:PYTHON_VERSION -match "2.7") {
-    $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "py-expression-eval", "specviz")
-  } else {
-    $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "py-expression-eval", "specviz", "cubeviz")
-  }
+  $packages = @("py-expression-eval", "specviz", "cubeviz")
 }
+
+# if ($env:STABLE -match "false") {
+#   # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
+#   $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt")
+# } else {
+#   # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
+#   if ($env:PYTHON_VERSION -match "2.7") {
+#     $packages = @("py-expression-eval", "specviz")
+#   } else {
+#     $packages = @("py-expression-eval", "specviz", "cubeviz")
+#   }
+# }
 
 foreach ($package in $packages) {
 
