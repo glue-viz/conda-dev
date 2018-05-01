@@ -31,10 +31,12 @@ requirements:
     - setuptools
     - six
     - numpy
+    - docopt
 
 test:
   imports:
     - specviz
+    - specviz.app
 
 about:
   home: https://github.com/spacetelescope/specviz
