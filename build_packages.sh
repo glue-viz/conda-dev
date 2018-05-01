@@ -31,7 +31,11 @@ fi
 if [[ $STABLE == false ]]; then
   packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp glue-exp";
 else
-  packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp py-expression-eval specviz cubeviz";
+  if [[ $PYTHON_VERSION == 2.7 ]]; then
+    packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp py-expression-eval specviz";
+  else
+    packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp py-expression-eval specviz cubeviz";
+  fi
 fi
 
 for package in $packages; do
