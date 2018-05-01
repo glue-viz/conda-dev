@@ -42,10 +42,10 @@ if ($env:STABLE -match "false") {
 }
 
 # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
-if ($env:PYTHON_VERSION -match "2.7") {
-  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "py-expression-eval", "specviz")
-} else {
-  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "py-expression-eval", "specviz", "cubeviz")
+$packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "py-expression-eval", "specviz")
+
+if (-Not $env:PYTHON_VERSION -match "2.7") {
+  $packages += @("cubeviz")
 }
 
 foreach ($package in $packages) {

@@ -28,15 +28,16 @@ if [[ $STABLE == false ]]; then
   conda config --add channels glueviz/label/dev
 fi
 
-if [[ $STABLE == false ]]; then
-  packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp glue-exp";
-else
-  if [[ $PYTHON_VERSION == 2.7 ]]; then
-    packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp py-expression-eval specviz";
-  else
-    packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp py-expression-eval specviz cubeviz";
-  fi
+packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp py-expression-eval specviz";
+
+if [[ $PYTHON_VERSION != "2.7" ]]; then
+  packages+=" cubeviz";
 fi
+
+if [[ $STABLE == false ]]; then
+  packages+=" glue-exp";
+fi
+
 
 for package in $packages; do
 
