@@ -41,14 +41,11 @@ if ($env:STABLE -match "false") {
   checkLastExitCode
 }
 
-if ($env:STABLE -match "false") {
-  # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
-  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt")
-  checkLastExitCode
+# $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
+if ($env:PYTHON_VERSION -match "2.7") {
+  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "py-expression-eval", "specviz")
 } else {
-  # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp")
-  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt")
-  checkLastExitCode
+  $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "py-expression-eval", "specviz", "cubeviz")
 }
 
 foreach ($package in $packages) {
@@ -56,8 +53,13 @@ foreach ($package in $packages) {
   if ($env:STABLE -match "true") {
 
     # The following puts the correct version number and md5 in the recipes
-    python prepare_recipe.py $package --stable
-    checkLastExitCode
+    if ($package -match "specviz" -Or $package -match "cubeviz") {
+      python prepare_recipe.py $package --stable-git
+      checkLastExitCode
+    } else {
+      python prepare_recipe.py $package --stable
+      checkLastExitCode
+    }
 
   } else {
 
