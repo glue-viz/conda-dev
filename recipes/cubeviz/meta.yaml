@@ -13,24 +13,17 @@ build:
 requirements:
 
   build:
-    - asdf
-    - asteval
-    - astropy
-    - glue-core >=0.13.0
-    - numpy
-    - pytest
-    - setuptools
     - python
-    - specviz
+    - setuptools
 
   run:
+    - python
     - asdf
     - asteval
     - astropy
     - glue-core >=0.13.0
     - numpy
     - pytest
-    - python
     - specviz
 
 about:

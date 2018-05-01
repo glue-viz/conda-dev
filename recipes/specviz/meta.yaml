@@ -12,23 +12,11 @@ build:
 
 requirements:
   build:
-    - astropy
-    - cython
-    - specutils <=0.2.2
-    - py-expression-eval
-    - pyyaml
-    - pyqtgraph >=0.10.0
-    - pyqt >=5.6
-    - qtpy
-    - scipy
-    - spectral-cube
-    - yaml
-    - setuptools
-    - six
-    - numpy
     - python
+    - setuptools
 
   run:
+    - python
     - astropy
     - cython
     - specutils <=0.2.2
@@ -43,7 +31,6 @@ requirements:
     - setuptools
     - six
     - numpy
-    - python
 
 test:
   imports:
