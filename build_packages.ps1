@@ -66,6 +66,12 @@ foreach ($package in $packages) {
     if ($package -match "glue-core") {
       git clone git://github.com/glue-viz/glue.git glue-core
       checkLastExitCode
+    } elseif ($package -match "py-expression-eval") {
+      git clone "git://github.com/Axiacore/$package"
+      checkLastExitCode
+    } elseif ($package -match "specviz" -Or $package -match "cubeviz") {
+      git clone "git://github.com/spacetelescope/$package"
+      checkLastExitCode
     } else {
       git clone "git://github.com/glue-viz/$package"
       checkLastExitCode
