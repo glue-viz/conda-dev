@@ -113,6 +113,7 @@ def prepare_recipe_stable_git(package):
 
     # Find latest stable version from PyPI
     package_json = requests.get('https://api.github.com/repos/spacetelescope/{package}/tags'.format(package=package)).json()
+    print(package_json)
     version = package_json[0]['name']
 
     source = Template(SOURCE_STABLE_GIT).render(version=version, package=package)
