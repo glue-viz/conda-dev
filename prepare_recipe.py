@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 import shutil
 import subprocess
 from datetime import datetime
@@ -22,7 +23,7 @@ source:
 
 SOURCE_STABLE_GIT = """
 source:
-    git_tag: {{version}}
+    git_tag: {{tag}}
     git_url: https://github.com/spacetelescope/{{package}}.git
 """
 
@@ -111,11 +112,14 @@ def prepare_recipe_stable_git(package):
     with open(os.path.join('recipes', package, 'meta.yaml')) as f:
         content = f.read()
 
-    # Find latest stable version from PyPI
-    package_json = requests.get('https://api.github.com/repos/spacetelescope/{package}/tags'.format(package=package)).json()
-    version = package_json[0]['name']
+    # Find latest stable version from GitHub - needs authentication on Travis
+    # package_json = requests.get('https://api.github.com/repos/spacetelescope/{package}/tags'.format(package=package)).json()
+    # version = package_json[0]['name']
+    with open('tags.json') as f:
+        tag = json.load(f)[package]
+    version = tag.replace('v', '')
 
-    source = Template(SOURCE_STABLE_GIT).render(version=version, package=package)
+    source = Template(SOURCE_STABLE_GIT).render(tag=tag, version=version, package=package)
 
     recipe = Template(content).render(version=version, source=source)
 
