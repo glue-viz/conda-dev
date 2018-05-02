@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - cubeviz = cubeviz.cubeviz:main
@@ -25,6 +25,7 @@ requirements:
     - numpy
     - pytest
     - specviz
+    - spectral-cube >=0.4.2
 
 about:
     home: https://github.com/spacetelescope/cubeviz
