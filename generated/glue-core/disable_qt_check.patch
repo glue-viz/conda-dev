@@ -1,0 +1,23 @@
+diff --git a/setup.py b/setup.py
+index fc277487..881325bd 100755
+--- a/setup.py
++++ b/setup.py
+@@ -73,18 +73,6 @@ glue-deps = glue._deps:main
+ glue = glue.main:main
+ """
+ 
+-# Glue can work with PyQt5 and PySide2. We can't add them to install_requires
+-# because they aren't on PyPI but we can check here that one of them is
+-# installed.
+-try:
+-    import PyQt5  # noqa
+-except ImportError:
+-    try:
+-        import PySide2  # noqa
+-    except ImportError:
+-        print("Glue requires PyQt5 or PySide2 to be installed")
+-        sys.exit(1)
+-
+ install_requires = ['numpy>=1.9',
+                     'pandas>=0.14',
+                     'astropy>=1.3',

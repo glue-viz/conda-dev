@@ -4,8 +4,14 @@ package:
 
 {{source}}
 
+  # The default setup.py includes a hard-coded check that PyQt is present but
+  # since we don't want to list it as a build-time dependency (since conda then
+  # restricts the versions too much)
+  patches:
+    - disable_qt_check.patch
+
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - glue = glue.main:main
@@ -18,11 +24,6 @@ requirements:
   build:
     - python
     - setuptools
-
-    # PyQt 5.9 appears to have issues when used in CircleCI
-    # https://github.com/ContinuumIO/anaconda-issues/issues/9270
-    - pyqt >=5.6  # [not linux]
-    - pyqt 5.6.*  # [linux]
 
   run:
 
