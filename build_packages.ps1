@@ -44,8 +44,13 @@ if ($env:STABLE -match "false") {
 # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
 $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt")
 
+# Don't build specviz dev for now as it's being refactored
+if ($env:PYTHON_VERSION -notmatch "2.7" -And $env:STABLE -match "true") {
+  $packages += @("py-expression-eval", "specviz")
+}
+
 if ($env:PYTHON_VERSION -notmatch "2.7") {
-  $packages += @("py-expression-eval", "specviz", "cubeviz")
+  $packages += @("cubeviz")
 }
 
 foreach ($package in $packages) {
