@@ -29,7 +29,7 @@ if [[ $STABLE == false ]]; then
 fi
 
 
-packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
+packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-samp";
 
 # Don't build specviz dev for now as it's being refactored
 if [[ $PYTHON_VERSION != "2.7" && $STABLE == true ]]; then
