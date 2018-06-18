@@ -1,0 +1,31 @@
+package:
+  name: mosviz
+  version: {{version}}
+
+{{source}}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - astropy
+    - glue-core >=0.13.0
+    - numpy
+    - specviz
+
+about:
+    home: https://github.com/spacetelescope/mosviz
+    license: BSD
+    summary: Quick-look analysis and visualization tool for multi-object spectroscopy
+
+test:
+  imports:
+    - mosviz
