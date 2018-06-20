@@ -7,7 +7,7 @@ os:
 
 env:
   global:
-    - CONDA_DEPENDENCIES='jinja2 pyqt requests'
+    - CONDA_DEPENDENCIES='jinja2 pyqt requests=2.18.4'
     - PYTHON_VERSION=3.6
 
 before_install:

@@ -19,7 +19,7 @@ jobs:
           name: Conda setup
           command: |
             conda config --set always_yes yes --set changeps1 no
-            conda install jinja2 pyqt requests
+            conda install jinja2 pyqt requests=2.18.4
       - run:
           name: Build packages
           command: ./build_all.sh

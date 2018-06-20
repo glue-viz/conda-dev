@@ -25,7 +25,7 @@ conda install -n root conda-build=3.8 anaconda-client
 checkLastExitCode
 
 # Install PyQt and jinja2 for the prepare script to work
-conda install jinja2 pyqt requests git
+conda install jinja2 pyqt requests=2.18.4 git
 checkLastExitCode
 
 # Don't auto-upload, instead we upload manually specifying a token.
