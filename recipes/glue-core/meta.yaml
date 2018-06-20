@@ -11,7 +11,7 @@ package:
     - disable_qt_check.patch
 
 build:
-  number: 1
+  number: 2
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - glue = glue.main:main
