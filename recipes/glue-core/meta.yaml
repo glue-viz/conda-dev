@@ -48,10 +48,7 @@ requirements:
     - mpl-scatter-density >=0.3
     - setuptools >=1.0
 
-    # PyQt 5.9 appears to have issues when used in CircleCI
-    # https://github.com/ContinuumIO/anaconda-issues/issues/9270
-    - pyqt >=5.6  # [not linux]
-    - pyqt 5.6.*  # [linux]
+    - pyqt >=5.6
 
     # Optional dependencies (defined in ``extras_require``)
     - scipy
