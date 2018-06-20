@@ -7,14 +7,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Installing OpenGL
+          name: Installing required libraries
           command: |
             apt update
-            apt -y install libgl1-mesa-swx11
-      - run:
-          name: Installing Gtk2
-          command: |
-            apt -y install libgtk2.0-dev libgl1-mesa-glx libxcomposite1 libxcursor1 libxi6 libxtst6 libxrandr2 libegl1-mesa
+            apt -y install libgtk2.0-dev libgl1-mesa-glx libegl1-mesa libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
       - run:
           name: Conda setup
           command: |

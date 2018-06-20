@@ -11,7 +11,7 @@ package:
     - disable_qt_check.patch
 
 build:
-  number: 2
+  number: 3
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - glue = glue.main:main
@@ -66,7 +66,7 @@ test:
     - glue.app.qt
   commands:
     - glue --version
-    # - glue-deps list
+    - glue-deps list
 
 # NOTE: we deliberatey do NOT include an app entry here, because we instead do this
 # in the glueviz meta-package (we don't want glue to appear twice in the navigator)
