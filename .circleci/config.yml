@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Installing Gtk2
           command: |
-            apt -y install libgtk2.0-dev
+            apt -y install libgtk2.0-dev libgl1-mesa-glx libxcomposite1 libxcursor1 libxi6 libxtst6 libxrandr2 libegl1-mesa
       - run:
           name: Conda setup
           command: |
