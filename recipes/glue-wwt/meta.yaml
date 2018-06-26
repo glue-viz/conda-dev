@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -17,10 +17,11 @@ requirements:
   run:
     - python
     - numpy
-    - glue-core >=0.11
+    - glue-core >=0.13
     - astropy
     - matplotlib
     - requests
+    - pywwt
 
 test:
   imports:
