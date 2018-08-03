@@ -41,7 +41,11 @@ if [[ $PYTHON_VERSION != "2.7" ]]; then
 fi
 
 if [[ $STABLE == false ]]; then
-  packages+=" glue-exp mosviz";
+  packages+=" glue-exp";
+fi
+
+if [[ $PYTHON_VERSION != "2.7" && $STABLE == false ]]; then
+  packages+=" mosviz";
 fi
 
 
