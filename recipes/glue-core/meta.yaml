@@ -4,12 +4,6 @@ package:
 
 {{source}}
 
-  # The default setup.py includes a hard-coded check that PyQt is present but
-  # since we don't want to list it as a build-time dependency (since conda then
-  # restricts the versions too much)
-  patches:
-    - disable_qt_check.patch
-
 build:
   number: 3
   script: python setup.py install --single-version-externally-managed --record record.txt
