@@ -29,7 +29,7 @@ if [[ $STABLE == false ]]; then
 fi
 
 
-packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-samp";
+packages="glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
 
 # Don't build specviz dev for now as it's being refactored
 if [[ $PYTHON_VERSION != "2.7" && $STABLE == true ]]; then
@@ -40,8 +40,10 @@ if [[ $PYTHON_VERSION != "2.7" ]]; then
   packages+=" cubeviz";
 fi
 
+# For now, only build dev builds of glue-core since the recipe will only
+# work with that version.
 if [[ $STABLE == false ]]; then
-  packages+=" glue-exp";
+  packages+=" glue-core glue-exp";
 fi
 
 if [[ $PYTHON_VERSION != "2.7" && $STABLE == false ]]; then

@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 2
+  number: 3
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -16,21 +16,15 @@ requirements:
 
   run:
     - python
-    # Numpy needs to be pinned to 1.12 (the latest version that
-    # there is a rasterio package for) otherwise there is a
-    # conflict according to conda
-    - numpy 1.12.*
+    - numpy
     - astropy
     - pyproj
     - rasterio
     - affine
     - glue-core >=0.12
-
-    # Pin version of the jpeg library to avoid issues on MacOS X
-    # where libgdal appears to be built against jpeg 8 but doesn't
-    # declare that pinning, causing issues now that jpeg 9 is
-    # available.
-    - jpeg 8*  # [osx]
+    # For some reason, when on Windows with Python 2.7, conda tries to install
+    # an older version of PyQt5 with sip 4.19 which causes issues
+    - sip 4.18.*  # [win and py27]
 
 test:
   imports:
