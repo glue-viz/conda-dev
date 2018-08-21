@@ -1,0 +1,36 @@
+package:
+  name: glue-jupyter
+  version: {{version}}
+
+{{source}}
+
+build:
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+
+  build:
+    - python
+    - pip
+
+  run:
+    - python
+    - glue-core
+    - glue-vispy-viewers
+    - ipyvolume
+    - bqplot
+    - ipympl
+
+test:
+  imports:
+    - glue_jupyter
+
+about:
+  home: https://github.com/glue-viz/glue-jupyter
+  license: BSD 3-Clause
+  summary: Jupyter interface to glue
+
+extra:
+  recipe-maintainers:
+    - astrofrog

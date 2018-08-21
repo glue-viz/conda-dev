@@ -19,7 +19,7 @@ conda install conda-build=3.8 anaconda-client
 conda install jinja2 pyqt requests=2.18.4
 
 # For now, we also need to install Numpy because it is included in some of the setup_requires
-conda install numpy
+conda install numpy nomkl
 
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
@@ -65,6 +65,10 @@ for package in $packages; do
       git clone git://github.com/glue-viz/glue.git glue-core;
     elif [[ $package == py-expression-eval ]]; then
       git clone "git://github.com/Axiacore/"$package".git"
+    elif [[ $package == ipymaterialui ]]; then
+      git clone "git://github.com/maartenbreddels/"$package".git"
+    elif [[ $package == bqplot ]]; then
+      git clone --branch scatter_webgl "git://github.com/maartenbreddels/bqplot.git" bqplot
     elif [[ $package == specviz || $package == cubeviz || $package == mosviz ]]; then
       git clone "git://github.com/spacetelescope/"$package".git"
     else
