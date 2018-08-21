@@ -17,7 +17,7 @@ requirements:
   run:
 
     - python
-    - gdcm  # [not osx]
+    - gdcm  # [py27 or not osx]
     - pydicom
     - glue-core >=0.12
 
