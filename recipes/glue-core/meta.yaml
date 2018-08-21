@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 3
+  number: 4
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - glue = glue.main:main
@@ -52,6 +52,10 @@ requirements:
     # Temporary: the scikit-image conda package is missing the dask dependency
     # so we add it here for now
     - dask
+
+    # For some reason, when on Windows with Python 2.7, conda tries to install
+    # an older version of PyQt5 with sip 4.19 which causes issues
+    - sip 4.18.*  # [win and py27]
 
 test:
   imports:
