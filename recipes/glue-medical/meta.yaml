@@ -20,11 +20,11 @@ requirements:
     - gdcm
     - pydicom
 
-#test:
-#  imports:
-#    - glue_medical
-#    - glue_medical.dicom_factory
-#    - glue_medical.dicom_importer
+test:
+ imports:
+   - glue_medical
+   - glue_medical.dicom_factory
+   - glue_medical.dicom_importer
 
 about:
   home: https://github.com/glue-viz/glue-medical
