@@ -81,6 +81,11 @@ for package in $packages; do
 
   cd generated
 
+  # Print out the recipe
+  echo "-----------------------------------------------------"
+  cat $package/meta.yaml
+  echo "-----------------------------------------------------"
+
   # If we are processing a pull request, we shouldn't skip builds even if they
   # exist already otherwise some builds might not get tested
   if [[ $TRAVIS_EVENT_TYPE != pull_request ]]; then
