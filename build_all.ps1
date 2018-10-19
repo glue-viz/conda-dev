@@ -23,6 +23,10 @@ $env:PYTHON_VERSION = '3.6'
 & ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
 checkLastExitCode
 
+$env:PYTHON_VERSION = '3.7'
+& ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
+checkLastExitCode
+
 $env:STABLE = 'false'
 
 $env:PYTHON_VERSION = '2.7'
@@ -34,5 +38,9 @@ $env:PYTHON_VERSION = '3.5'
 checkLastExitCode
 
 $env:PYTHON_VERSION = '3.6'
+& ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
+checkLastExitCode
+
+$env:PYTHON_VERSION = '3.7'
 & ((Split-Path $MyInvocation.InvocationName) + "\build_packages.ps1")
 checkLastExitCode
