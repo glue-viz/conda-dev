@@ -42,7 +42,7 @@ if ($env:STABLE -match "false") {
 }
 
 # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
-$packages = @("glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial")
+$packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial")
 
 # Don't build specviz dev for now as it's being refactored
 if ($env:PYTHON_VERSION -notmatch "2.7" -And $env:STABLE -match "true") {
@@ -51,12 +51,6 @@ if ($env:PYTHON_VERSION -notmatch "2.7" -And $env:STABLE -match "true") {
 
 if ($env:PYTHON_VERSION -notmatch "2.7") {
   $packages += @("cubeviz")
-}
-
-# For now, only build dev builds of glue-core since the recipe will only
-# work with that version.
-if ($env:STABLE -match "false") {
-  $packages += @("glue-core")
 }
 
 foreach ($package in $packages) {
