@@ -34,11 +34,6 @@ fi
 
 packages="glue-core glue-medical glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
 
-# Don't build specviz dev for now as it's being refactored
-if [[ $PYTHON_VERSION != "2.7" && $STABLE == true ]]; then
-  packages+=" py-expression-eval specviz";
-fi
-
 if [[ $PYTHON_VERSION != "2.7" ]]; then
   packages+=" cubeviz";
 fi
@@ -49,8 +44,8 @@ if [[ $STABLE == false ]]; then
   packages+=" glue-exp";
 fi
 
-if [[ $PYTHON_VERSION != "2.7" && $STABLE == false ]]; then
-  packages+=" mosviz";
+if [[ $PYTHON_VERSION != "2.7" && $STABLE == false && $PYTHON_VERSION != "3.7" ]]; then
+  packages+=" mosviz specviz";
 fi
 
 
