@@ -48,7 +48,7 @@ if ($env:PYTHON_VERSION -notmatch "2.7") {
   $packages += @("cubeviz")
 }
 
-if ($env:STABLE -match "false") {
+if ($env:STABLE -match "false" -And $env:PYTHON_VERSION -notmatch "2.7") {
   $packages += @("specviz")
 }
 

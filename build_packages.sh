@@ -41,11 +41,11 @@ fi
 # For now, only build dev builds of glue-core since the recipe will only
 # work with that version.
 if [[ $STABLE == false ]]; then
-  packages+=" glue-exp specviz";
+  packages+=" glue-exp";
 fi
 
 if [[ $PYTHON_VERSION != "2.7" && $STABLE == false ]]; then
-  packages+=" mosviz";
+  packages+=" mosviz specviz";
 fi
 
 
