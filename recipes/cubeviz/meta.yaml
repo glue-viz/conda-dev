@@ -5,7 +5,8 @@ package:
 {{source}}
 
 build:
-  number: 1
+  noarch: python
+  number: 2
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - cubeviz = cubeviz.cubeviz:main
@@ -13,11 +14,11 @@ build:
 requirements:
 
   build:
-    - python
+    - python >=3
     - setuptools
 
   run:
-    - python
+    - python >=3
     - asdf
     - asteval
     - astropy
