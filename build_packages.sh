@@ -38,7 +38,7 @@ if [[ $PYTHON_VERSION != "3.7" ]]; then
   packages+=" glue-medical glue-wwt glue-geospatial";
 fi
 
-if [[ $PYTHON_VERSION != "2.7" ]]; then
+if [[ $PYTHON_VERSION != "2.7" && $PYTHON_VERSION != "3.7" ]]; then
   packages+=" cubeviz";
 fi
 
