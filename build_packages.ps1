@@ -42,42 +42,32 @@ if ($env:STABLE -match "false") {
 }
 
 # $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
-$packages = @("glue-core", "glue-vispy-viewers", "glueviz")
+
+# Packages that need to be build per Python version and architecture
+
+$packages = @("glue-core", "glueviz")
 
 if ($env:PYTHON_VERSION -notmatch "3.7") {
-  $packages += @("glue-medical", "glue-wwt", "glue-geospatial")
+  $packages += @("glue-medical")
 }
 
-if ($env:PYTHON_VERSION -notmatch "2.7" -And $env:PYTHON_VERSION -notmatch "3.7") {
-  $packages += @("cubeviz")
-}
+# noarch packages aren't listed here - they are only build on CircleCI
 
-if ($env:STABLE -match "false" -And $env:PYTHON_VERSION -notmatch "2.7" -And $env:PYTHON_VERSION -notmatch "3.7") {
-  $packages += @("specviz")
-}
 
 foreach ($package in $packages) {
 
   if ($env:STABLE -match "true") {
 
     # The following puts the correct version number and md5 in the recipes
-    if ($package -match "specviz" -Or $package -match "cubeviz") {
-      python prepare_recipe.py $package --stable-git
-      checkLastExitCode
-    } else {
-      python prepare_recipe.py $package --stable
-      checkLastExitCode
-    }
+    python prepare_recipe.py $package --stable
+    checkLastExitCode
 
   } else {
 
     if ($package -match "glue-core") {
       git clone git://github.com/glue-viz/glue.git glue-core
       checkLastExitCode
-    } elseif ($package -match "py-expression-eval") {
-      git clone "git://github.com/Axiacore/$package"
-      checkLastExitCode
-    } elseif ($package -match "specviz" -Or $package -match "cubeviz") {
+    } elseif ($package -match "specviz" -Or $package -match "cubeviz" -Or $package -match "mosviz") {
       git clone "git://github.com/spacetelescope/$package"
       checkLastExitCode
     } else {

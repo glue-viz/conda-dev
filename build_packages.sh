@@ -31,27 +31,19 @@ if [[ $STABLE == false ]]; then
   conda config --add channels glueviz/label/dev
 fi
 
+# Packages that need to be build per Python version and architecture
 
-packages="glue-core glue-vispy-viewers glueviz glue-samp";
+packages="glue-core glueviz";
 
 if [[ $PYTHON_VERSION != "3.7" ]]; then
-  packages+=" glue-medical glue-wwt glue-geospatial";
+  packages+=" glue-medical";
 fi
 
-if [[ $PYTHON_VERSION != "2.7" && $PYTHON_VERSION != "3.7" ]]; then
-  packages+=" cubeviz";
-fi
+# noarch packages are only build on Python 3.6 on CircleCI
 
-# For now, only build dev builds of glue-core since the recipe will only
-# work with that version.
-if [[ $STABLE == false ]]; then
-  packages+=" glue-exp";
+if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" && $STABLE == false ]]; then
+  packages+=" cubeviz glue-geospatial glue-samp glue-vispy-viewers glue-wwt mosviz specviz glue-exp";
 fi
-
-if [[ $PYTHON_VERSION != "2.7" && $STABLE == false && $PYTHON_VERSION != "3.7" ]]; then
-  packages+=" mosviz specviz";
-fi
-
 
 for package in $packages; do
 
