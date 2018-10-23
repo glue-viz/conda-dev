@@ -32,10 +32,10 @@ if [[ $STABLE == false ]]; then
 fi
 
 
-packages="glue-core glue-vispy-viewers glueviz glue-wwt glue-geospatial glue-samp";
+packages="glue-core glue-vispy-viewers glueviz glue-samp";
 
 if [[ $PYTHON_VERSION != "3.7" ]]; then
-  packages+=" glue-medical";
+  packages+=" glue-medical glue-wwt glue-geospatial";
 fi
 
 if [[ $PYTHON_VERSION != "2.7" ]]; then
