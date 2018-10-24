@@ -22,7 +22,7 @@ requirements:
     - asdf
     - asteval
     - astropy
-    - glue-core >=0.13.0
+    - glue-core >=0.13.0,<0.13.999
     - numpy
     - pytest
     - specviz <0.5.999
