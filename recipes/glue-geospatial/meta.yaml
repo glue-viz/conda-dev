@@ -5,7 +5,8 @@ package:
 {{source}}
 
 build:
-  number: 3
+  noarch: python
+  number: 4
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -22,9 +23,6 @@ requirements:
     - rasterio
     - affine
     - glue-core >=0.12
-    # For some reason, when on Windows with Python 2.7, conda tries to install
-    # an older version of PyQt5 with sip 4.19 which causes issues
-    - sip 4.18.*  # [win and py27]
 
 test:
   imports:
