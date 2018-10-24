@@ -50,11 +50,7 @@ for package in $packages; do
   if [[ $STABLE == true ]]; then
 
     # The following puts the correct version number and md5 in the recipes
-    if [[ $package == specviz || $package == cubeviz || $package == mosviz ]]; then
-      python prepare_recipe.py $package --stable-git;
-    else
-      python prepare_recipe.py $package --stable;
-    fi
+    python prepare_recipe.py $package --stable;
 
   else
 
