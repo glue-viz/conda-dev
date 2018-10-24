@@ -25,7 +25,7 @@ requirements:
     - glue-core >=0.13.0
     - numpy
     - pytest
-    - specviz <0.6
+    - specviz <0.5.999
     - spectral-cube >=0.4.2
 
 about:
