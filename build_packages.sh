@@ -33,7 +33,7 @@ fi
 
 # Packages that need to be build per Python version and architecture
 
-packages="glue-core glueviz";
+packages="glue-core";
 
 if [[ $PYTHON_VERSION != "3.7" ]]; then
   packages+=" glue-medical";
@@ -44,6 +44,9 @@ fi
 if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" && $STABLE == false ]]; then
   packages+=" cubeviz glue-geospatial glue-samp glue-vispy-viewers glue-wwt mosviz specviz glue-exp";
 fi
+
+# This needs to be built after glue-vispy-viewers
+packages+=" glueviz"
 
 for package in $packages; do
 
