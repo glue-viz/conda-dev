@@ -46,7 +46,7 @@ if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" ]]; then
 fi
 
 if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" ]]; then
-  packages+=" mosviz specviz";
+  packages+=" specviz mosviz";
 fi
 
 if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" && $STABLE == false ]]; then
