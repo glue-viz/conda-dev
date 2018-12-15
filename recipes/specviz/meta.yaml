@@ -6,24 +6,24 @@ package:
 
 build:
   noarch: python
-  number: 2
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - specviz = specviz.app:start
 
 requirements:
   build:
-    - python >=3
+    - python >=3.5
     - setuptools
 
   run:
-    - python >=3
-    - astropy
+    - python >=3.5
+    - astropy >=3.0
     - pyqt >=5.6
     - pyqtgraph >=0.10.0
     - qtawesome
     - qtpy
-    - specutils >=0.4
+    - specutils >=0.5.1
     - click
     - pytest
     - asteval

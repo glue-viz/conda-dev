@@ -6,23 +6,23 @@ package:
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt --offline --no-git
 
 requirements:
 
   build:
-    - python >=3
-    - numpy
+    - python >=3.5
     - setuptools
 
   run:
-    - python >=3
-    - astropy
-    - glue-core >=0.13.0
-    - regions >=0.3
+    - python >=3.5
     - numpy
-    - specviz <0.5.999
+    - astropy >=3.0
+    - glue-core >=0.13.0
+    - qtpy
+    - regions >=0.3
+    - specviz >=0.6.2
 
 about:
     home: https://github.com/spacetelescope/mosviz
