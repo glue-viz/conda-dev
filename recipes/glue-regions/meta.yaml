@@ -1,0 +1,38 @@
+package:
+  name: glue-regions
+  version: {{version}}
+
+{{source}}
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - glue-core >=0.14
+    - regions
+
+test:
+ imports:
+   - glue_regions
+   - glue_regions.region_converter
+   - glue_regions.region_viewer
+
+about:
+  home: https://github.com/glue-viz/glue-medical
+  license: BSD 3-Clause
+  summary: Plugin for glue that handles Astropy regions
+
+extra:
+  recipe-maintainers:
+    - astrofrog
+    - keflavich
+    - catherinezucker
