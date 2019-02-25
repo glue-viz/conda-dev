@@ -7,7 +7,7 @@ package:
 build:
   noarch: python
   number: 0
-  script: python -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  script: python -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - mosviz = mosviz:setup
 
