@@ -6,7 +6,7 @@ package:
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -21,7 +21,7 @@ requirements:
     - glue-core >=0.14
     - qtpy
     - astropy
-    - pywwt >=0.5.2
+    - pywwt >=0.5.3
 
 test:
   imports:
