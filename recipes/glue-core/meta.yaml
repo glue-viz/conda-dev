@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - glue = glue.main:main
@@ -36,7 +36,7 @@ requirements:
     - matplotlib >=2.0
     - qtpy >=1.2
     - ipython >=4.0
-    - ipykernel
+    - ipykernel >=4.0,!=5.0.0,!=5.1.0
     - qtconsole
     - dill >=0.2
     - xlrd >=1.0
