@@ -73,6 +73,10 @@ def prepare_recipe_dev(package):
                             os.path.join('generated', package, filename))
 
 
+def pre(version):
+    return 'a' in version or 'b' in version or 'rc' in version
+
+
 def prepare_recipe_stable(package):
 
     with open(os.path.join('recipes', package, 'meta.yaml')) as f:
@@ -80,8 +84,10 @@ def prepare_recipe_stable(package):
 
     # Find latest stable version from PyPI
     package_json = requests.get('https://pypi.python.org/pypi/{package}/json'.format(package=package)).json()
-    version = sorted(package_json['releases'], key=lambda s: tuple(map(int, s.split('.'))))[-1]
-    releases = package_json['releases'][version]
+    releases = package_json['releases']
+    releases = dict([(version, release) for version, release in releases.items() if not pre(version)])
+    version = sorted(releases, key=lambda s: tuple(map(int, s.split('.'))))[-1]
+    releases = releases[version]
     for release in releases:
         if release['python_version'] == 'source':
             break
