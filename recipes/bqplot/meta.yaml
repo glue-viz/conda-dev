@@ -1,5 +1,5 @@
-# This is needed for glue-jupyter and can be removed once this package is
-# in conda-forge
+# This is needed for glue-jupyter and can be removed once this package has
+# a stable release in conda-forge.
 
 package:
   name: bqplot
@@ -8,12 +8,12 @@ package:
 {{source}}
 
 build:
-  noarch: python
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+    number: 0
+    script: python -m pip install --no-deps --ignore-installed .
+    noarch: python
 
 requirements:
-  host:
+  build:
     - python
     - setuptools
     - jupyter
@@ -32,10 +32,11 @@ test:
     - bqplot
 
 about:
-  home: https://github.com/maartenbreddels/bqplot
-  license: MIT
-  summary: Modern form/ui elements for Jupyter Widgets
+    home: https://github.com/bloomberg/bqplot
+    license: Apache 2.0
+    license_family: Apache
+    summary: Plotting library for Jupyter
+    description: Plotting library for Jupyter
+    doc_url: https://bqplot.readthedocs.io
+    dev_url: https://github.com/bloomberg/bqplot
 
-extra:
-  recipe-maintainers:
-    - astrofrog
