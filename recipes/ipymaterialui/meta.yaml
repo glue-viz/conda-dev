@@ -8,18 +8,17 @@ package:
 {{source}}
 
 build:
-  noarch: python
-  number: 0
-  script: python setup.py jsdeps
+    number: 0
+    script: python -m pip install --no-deps --ignore-installed .
+    noarch: python
 
 requirements:
-
   build:
     - python
     - setuptools
-    - nodejs
     - jupyter
-
+    - pip
+    - nodejs
   run:
     - python
     - ipywidgets
