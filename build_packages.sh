@@ -46,7 +46,7 @@ if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" ]]; then
 fi
 
 if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" && $STABLE == false ]]; then
-  packages+=" glue-regions glue-exp cubeviz";
+  packages+=" glue-regions glue-exp cubeviz bqplot ipymaterialui glue-jupyter";
 fi
 
 # This needs to be built after glue-vispy-viewers
@@ -68,7 +68,7 @@ for package in $packages; do
     elif [[ $package == ipymaterialui ]]; then
       git clone "git://github.com/maartenbreddels/"$package".git"
     elif [[ $package == bqplot ]]; then
-      git clone --branch scatter_webgl "git://github.com/maartenbreddels/bqplot.git" bqplot
+      git clone "git://github.com/bloomberg/bqplot.git" bqplot
     elif [[ $package == specviz || $package == cubeviz || $package == mosviz ]]; then
       git clone "git://github.com/spacetelescope/"$package".git"
     else
