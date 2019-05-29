@@ -44,15 +44,20 @@ def prepare_recipe_dev(package):
         sys.exit(1)
 
     overall_version = subprocess.check_output('python setup.py --version', shell=True).decode('ascii').splitlines()[-1]
-    utime = subprocess.check_output('git log -1 --pretty=format:%ct', shell=True).decode('ascii')
-    chash = subprocess.check_output('git log -1 --pretty=format:%h', shell=True).decode('ascii')
-    os.chdir('..')
 
-    stamp = datetime.fromtimestamp(int(utime)).strftime('%Y%m%d%H%M%S')
+    # If using a pre-release instead of a git repository, we shouldn't try and
+    # get the git hash.
 
-    overall_version = overall_version.strip().split('.dev')[0]
-
-    version = overall_version + '.dev' + stamp + '.' + chash
+    if os.path.exists('.git'):
+        utime = subprocess.check_output('git log -1 --pretty=format:%ct', shell=True).decode('ascii')
+        chash = subprocess.check_output('git log -1 --pretty=format:%h', shell=True).decode('ascii')
+        os.chdir('..')
+        stamp = datetime.fromtimestamp(int(utime)).strftime('%Y%m%d%H%M%S')
+        overall_version = overall_version.strip().split('.dev')[0]
+        version = overall_version + '.dev' + stamp + '.' + chash
+    else:
+        os.chdir('..')
+        version = overall_version
 
     source = Template(SOURCE_DEV).render(package=package_dir)
 
