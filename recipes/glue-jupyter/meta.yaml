@@ -18,9 +18,13 @@ requirements:
     - python
     - glue-core
     - glue-vispy-viewers
-    - ipyvolume
-    - bqplot
+    - notebook
     - ipympl
+    - ipyvolume
+    - ipywidgets
+    - ipymaterialui
+    - bqplot-image-gl
+    - bqplot
 
 test:
   imports:
