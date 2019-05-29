@@ -1,0 +1,38 @@
+# This is needed for glue-jupyter and can be removed once this package is
+# in conda-forge
+
+package:
+  name: ipymaterialui
+  version: {{version}}
+
+{{source}}
+
+build:
+    number: 0
+    script: python -m pip install --no-deps --ignore-installed .
+    noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jupyter
+    - pip
+    - nodejs
+  run:
+    - python
+    - ipywidgets
+    - traitlets
+
+test:
+  imports:
+    - ipymaterialui
+
+about:
+  home: https://github.com/maartenbreddels/ipymaterialui
+  license: MIT
+  summary: Modern form/ui elements for Jupyter Widgets
+
+extra:
+  recipe-maintainers:
+    - astrofrog

@@ -19,7 +19,7 @@ conda install conda-build=3.8 anaconda-client
 conda install jinja2 pyqt requests=2.18.4
 
 # For now, we also need to install Numpy because it is included in some of the setup_requires
-conda install numpy
+conda install numpy nomkl
 
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
@@ -46,7 +46,7 @@ if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" ]]; then
 fi
 
 if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" && $STABLE == false ]]; then
-  packages+=" glue-regions glue-exp cubeviz";
+  packages+=" glue-regions glue-exp cubeviz bqplot ipymaterialui glue-jupyter";
 fi
 
 # This needs to be built after glue-vispy-viewers
@@ -65,6 +65,16 @@ for package in $packages; do
       git clone git://github.com/glue-viz/glue.git glue-core;
     elif [[ $package == py-expression-eval ]]; then
       git clone "git://github.com/Axiacore/"$package".git"
+    elif [[ $package == ipymaterialui ]]; then
+      # For ipymaterialui we use a pre-release to avoid requiring npm
+      pip download ipymaterialui --pre --no-binary :all: --no-deps
+      mkdir ipymaterialui
+      tar --strip 1 --directory ipymaterialui -xvzf ipymaterialui*gz
+    elif [[ $package == bqplot ]]; then
+      # For bqplot we use a pre-release to avoid requiring npm
+      pip download bqplot --pre --no-binary :all: --no-deps
+      mkdir bqplot
+      tar --strip 1 --directory bqplot -xvzf bqplot*gz
     elif [[ $package == specviz || $package == cubeviz || $package == mosviz ]]; then
       git clone "git://github.com/spacetelescope/"$package".git"
     else

@@ -43,7 +43,7 @@ def prepare_recipe_dev(package):
         print('Package {0} not cloned'.format(package))
         sys.exit(1)
 
-    overall_version = subprocess.check_output('python setup.py --version', shell=True).decode('ascii')
+    overall_version = subprocess.check_output('python setup.py --version', shell=True).decode('ascii').splitlines()[-1]
     utime = subprocess.check_output('git log -1 --pretty=format:%ct', shell=True).decode('ascii')
     chash = subprocess.check_output('git log -1 --pretty=format:%h', shell=True).decode('ascii')
     os.chdir('..')
