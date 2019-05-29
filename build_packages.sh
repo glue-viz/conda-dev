@@ -66,9 +66,15 @@ for package in $packages; do
     elif [[ $package == py-expression-eval ]]; then
       git clone "git://github.com/Axiacore/"$package".git"
     elif [[ $package == ipymaterialui ]]; then
-      git clone "git://github.com/maartenbreddels/"$package".git"
+      # For ipymaterialui we use a pre-release to avoid requiring npm
+      pip download ipymaterialui --pre --no-binary :all: --no-deps
+      mkdir ipymaterialui
+      tar --strip 1 --directory ipymaterialui -xvzf ipymaterialui*gz
     elif [[ $package == bqplot ]]; then
-      git clone "git://github.com/bloomberg/bqplot.git" bqplot
+      # For bqplot we use a pre-release to avoid requiring npm
+      pip download bqplot --pre --no-binary :all: --no-deps
+      mkdir bqplot
+      tar --strip 1 --directory bqplot -xvzf bqplot*gz
     elif [[ $package == specviz || $package == cubeviz || $package == mosviz ]]; then
       git clone "git://github.com/spacetelescope/"$package".git"
     else
