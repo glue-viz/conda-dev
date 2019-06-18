@@ -1,0 +1,35 @@
+package:
+  name: glue-plotly
+  version: {{version}}
+
+{{source}}
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools >=30.3
+    - setuptools_scm
+
+  run:
+    - python
+    - glue-core >=0.14
+    - plotly
+
+test:
+  imports:
+    - glue_plotly
+
+about:
+  home: https://github.com/glue-viz/glue-plotly
+  license: BSD 3-Clause
+  summary: Plot.ly plugin for glue
+
+extra:
+  recipe-maintainers:
+    - astrofrog

@@ -41,8 +41,6 @@ if ($env:STABLE -match "false") {
   checkLastExitCode
 }
 
-# $packages = @("glue-core", "glue-medical", "glue-vispy-viewers", "glueviz", "glue-wwt", "glue-geospatial", "glue-samp", "glue-exp")
-
 # Packages that need to be build per Python version and architecture
 
 $packages = @("glue-core", "glueviz")
