@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - glue = glue.main:main
@@ -17,10 +17,8 @@ requirements:
 
   build:
     - python
-    - setuptools
-    # We need to include PyQt5 here to make sure that PyQt5 doesn't
-    # get included in install_requires
-    - pyqt >=5.6
+    - setuptools >=30.3
+    - setuptools_scm
 
   run:
 
@@ -31,9 +29,11 @@ requirements:
     # Required dependencies
     - python
     - numpy >=1.9
+    - matplotlib >=2.1
+    - scipy >=1.0
     - pandas >=0.14
     - astropy >=2.0
-    - matplotlib >=2.0
+    - setuptools >=1.0
     - qtpy >=1.2
     - ipython >=4.0
     - ipykernel >=4.0,!=5.0.0,!=5.1.0
@@ -41,14 +41,12 @@ requirements:
     - dill >=0.2
     - xlrd >=1.0
     - h5py >=2.4
-    - bottleneck >=1.2
     - mpl-scatter-density >=0.5
-    - setuptools >=1.0
+    - bottleneck >=1.2
 
     - pyqt >=5.6
 
     # Optional dependencies (defined in ``extras_require``)
-    - scipy
     - scikit-image
     - plotly
 

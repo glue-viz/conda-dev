@@ -13,15 +13,16 @@ requirements:
 
   build:
     - python
-    - setuptools
+    - setuptools >=30.3
+    - setuptools_scm
 
   run:
     - python
     - numpy
-    - glue-core >=0.14
+    - glue-core >=0.15
     - qtpy
     - astropy
-    - pywwt >=0.5.3
+    - pywwt >=0.6.0
 
 test:
   imports:
