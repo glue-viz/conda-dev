@@ -17,6 +17,11 @@ build:
 
 requirements:
 
+  build:
+    - python
+    - setuptools >=30.3
+    - setuptools_scm
+
   run:
     - glue-core >=0.15.0
     - glue-vispy-viewers >=0.12
