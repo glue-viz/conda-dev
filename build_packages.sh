@@ -13,7 +13,7 @@ fi
 source activate root
 
 # Install conda-build and the anaconda client
-conda install conda-build=3.8 anaconda-client
+conda install conda-build anaconda-client
 
 # Install PyQt and jinja2 for the prepare script to work
 conda install jinja2 pyqt requests=2.18.4

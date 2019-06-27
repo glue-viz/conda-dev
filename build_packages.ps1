@@ -21,7 +21,7 @@ activate root
 checkLastExitCode
 
 # Install conda-build and the anaconda client
-conda install -n root conda-build=3.8 anaconda-client
+conda install -n root conda-build anaconda-client
 checkLastExitCode
 
 # Install PyQt and jinja2 for the prepare script to work
