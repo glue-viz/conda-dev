@@ -13,7 +13,8 @@ requirements:
 
   build:
     - python
-    - setuptools
+    - setuptools >=30.3
+    - setuptools_scm
 
   run:
     - python
