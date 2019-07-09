@@ -23,8 +23,8 @@ requirements:
     - setuptools_scm
 
   run:
-    - glue-core >=0.15.0
-    - glue-vispy-viewers >=0.12
+    - glue-core >=0.15.5
+    - glue-vispy-viewers >=0.12.2
 
 app:
   entry: glue
