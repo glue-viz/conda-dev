@@ -19,7 +19,7 @@ conda install conda-build anaconda-client
 conda install jinja2 pyqt requests=2.18.4
 
 # For now, we also need to install Numpy because it is included in some of the setup_requires
-conda install numpy nomkl
+conda install numpy
 
 # Don't auto-upload, instead we upload manually specifying a token.
 conda config --set anaconda_upload no
