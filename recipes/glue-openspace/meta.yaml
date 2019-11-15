@@ -1,0 +1,39 @@
+package:
+  name: glue-openspace
+  version: {{version}}
+
+{{source}}
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools >=30.3
+    - setuptools_scm
+
+  run:
+    - python
+    - numpy
+    - glue-core >=0.15
+    - qtpy
+    - astropy
+    - matplotlib
+    - websocket-client
+
+test:
+  imports:
+    - glue_openspace
+
+about:
+  home: https://github.com/glue-viz/glue-openspace
+  license: BSD 3-Clause
+  summary: OpenSpace viewer plugin for glue
+
+extra:
+  recipe-maintainers:
+    - astrofrog
