@@ -46,7 +46,7 @@ if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" ]]; then
 fi
 
 if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" && $STABLE == false ]]; then
-  packages+=" glue-openspace bqplot ipymaterialui glue-regions glue-exp cubeviz";
+  packages+=" glue-openspace glue-regions glue-exp cubeviz";
 fi
 
 # This needs to be built after glue-vispy-viewers

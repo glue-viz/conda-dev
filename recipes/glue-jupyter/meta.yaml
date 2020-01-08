@@ -18,15 +18,16 @@ requirements:
 
   run:
     - python >=3.6
-    - glue-core
-    - glue-vispy-viewers
+    - glue-core >=0.15
+    - glue-vispy-viewers >=0.12
     - notebook
     - ipympl
     - ipyvolume
     - ipywidgets
-    - ipymaterialui
+    - ipymaterialui =0.1.1
+    - ipyvuetify >1.0.4,<2
     - bqplot-image-gl
-    - bqplot
+    - bqplot >=0.12
 
 test:
   imports:
