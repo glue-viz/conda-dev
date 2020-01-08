@@ -6,17 +6,18 @@ package:
 
 build:
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: python -m pip install --no-deps --ignore-installed --no-build-isolation .
   noarch: python
 
 requirements:
 
   build:
-    - python
-    - pip
+    - python >=3.6
+    - setuptools
+    - setuptools_scm
 
   run:
-    - python
+    - python >=3.6
     - glue-core
     - glue-vispy-viewers
     - notebook
