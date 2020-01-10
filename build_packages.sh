@@ -9,9 +9,6 @@ else
   UPLOAD=false;
 fi
 
-# Switch to root environment to have access to conda-build
-source activate root
-
 # Install conda-build and the anaconda client
 conda install conda-build anaconda-client
 

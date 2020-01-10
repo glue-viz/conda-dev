@@ -15,6 +15,7 @@ env:
 before_install:
   - git clone git://github.com/astropy/ci-helpers.git
   - source ci-helpers/travis/setup_conda.sh
+  - conda activate base
 
 script:
   - ./build_all.sh
