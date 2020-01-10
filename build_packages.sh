@@ -13,7 +13,7 @@ fi
 conda install conda-build anaconda-client
 
 # Install PyQt and jinja2 for the prepare script to work
-conda install jinja2 pyqt requests=2.18.4
+conda install jinja2 pyqt requests
 
 # For now, we also need to install Numpy because it is included in some of the setup_requires
 conda install numpy
