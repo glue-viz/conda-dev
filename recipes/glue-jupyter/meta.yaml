@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 0
+  number: 1
   script: python -m pip install --no-deps --ignore-installed --no-build-isolation .
   noarch: python
 
@@ -20,13 +20,13 @@ requirements:
     - python >=3.6
     - glue-core >=0.15
     - glue-vispy-viewers >=0.12
-    - notebook
-    - ipympl
-    - ipyvolume
-    - ipywidgets
+    - notebook >=4.0
+    - ipympl >=0.3.0
+    - ipyvolume >=0.5.0
+    - ipywidgets >=7.4.0
     - ipymaterialui =0.1.1
     - ipyvuetify >1.0.4,<2
-    - bqplot-image-gl
+    - bqplot-image-gl >=0.1.6
     - bqplot >=0.12
 
 test:
