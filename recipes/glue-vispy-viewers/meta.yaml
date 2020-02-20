@@ -27,6 +27,7 @@ requirements:
     - astropy >=1.1
     - pillow
     - matplotlib
+    - vispy >=0.6
 
 test:
   imports:
