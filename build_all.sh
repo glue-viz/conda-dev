@@ -10,10 +10,16 @@ export PYTHON_VERSION=3.6
 export PYTHON_VERSION=3.7
 ./build_packages.sh
 
+export PYTHON_VERSION=3.8
+./build_packages.sh
+
 export STABLE=false
 
 export PYTHON_VERSION=3.6
 ./build_packages.sh
 
 export PYTHON_VERSION=3.7
+./build_packages.sh
+
+export PYTHON_VERSION=3.8
 ./build_packages.sh
