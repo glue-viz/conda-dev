@@ -5,7 +5,7 @@ package:
 {{source}}
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - glue = glue.main:main
@@ -29,6 +29,7 @@ requirements:
 
     # Required dependencies
     - python
+    - echo >=0.2
     - numpy >=1.11
     - matplotlib >=2.1
     - scipy >=1.0
