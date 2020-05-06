@@ -32,7 +32,7 @@ fi
 
 packages="glue-core";
 
-if [[ $PYTHON_VERSION != "3.7" ]]; then
+if [[ $PYTHON_VERSION == "3.6" ]]; then
   packages+=" glue-medical";
 fi
 
