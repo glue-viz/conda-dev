@@ -20,11 +20,11 @@ requirements:
     - python >=3.6
     - numpy
     - pyopengl
-    - glue-core >=0.15
+    - glue-core >=1.0
     - qtpy
-    - pyqt >=5.6
+    - pyqt >=5.9
     - scipy
-    - astropy >=1.1
+    - astropy >=4.0
     - pillow
     - matplotlib
     - vispy >=0.6
