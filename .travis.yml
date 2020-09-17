@@ -23,4 +23,4 @@ before_install:
   - source ci-helpers/travis/setup_conda.sh
 
 script:
-  - conda install -c $CHANNEL glueviz=0.15 glue-wwt=0.4 glue-jupyter=0.1
+  - mamba install -c $CHANNEL glueviz=0.15 glue-wwt=0.4 glue-jupyter=0.1
