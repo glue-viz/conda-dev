@@ -1,0 +1,26 @@
+language: c
+
+sudo: false
+
+os:
+  - linux
+  - osx
+  - windows
+
+env:
+  matrix:
+    - PYTHON_VERSION=3.6 CHANNEL=glueviz
+    - PYTHON_VERSION=3.7 CHANNEL=glueviz
+    - PYTHON_VERSION=3.8 CHANNEL=glueviz
+    - PYTHON_VERSION=3.6 CHANNEL=glueviz/label/dev
+    - PYTHON_VERSION=3.7 CHANNEL=glueviz/label/dev
+    - PYTHON_VERSION=3.8 CHANNEL=glueviz/label/dev
+  global:
+    - MAMBA=True
+
+before_install:
+  - git clone git://github.com/astropy/ci-helpers.git
+  - source ci-helpers/travis/setup_conda.sh
+
+script:
+  - conda install -c $CHANNEL glueviz=0.15 glue-wwt=0.4 glue-jupyter=0.1
