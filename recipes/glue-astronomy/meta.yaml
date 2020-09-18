@@ -1,0 +1,38 @@
+package:
+  name: glue-astronomy
+  version: {{version}}
+
+{{source}}
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+
+  build:
+    - python
+    - setuptools >=30.3
+    - setuptools_scm
+
+  run:
+    - python
+    - astropy >=4.0
+    - glue-core >=1.0
+    - regions >=0.4
+    - specutils >=0.7
+    - spectral-cube >=0.5
+
+test:
+  imports:
+    - glue_astronomy
+
+about:
+  home: https://github.com/glue-viz/glue-astronomy
+  license: BSD 3-Clause
+  summary: Astronomy-specific plugins for glue
+
+extra:
+  recipe-maintainers:
+    - astrofrog
