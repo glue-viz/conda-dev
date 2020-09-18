@@ -9,18 +9,18 @@ os:
 
 env:
   matrix:
-    - PYTHON_VERSION=3.6 CHANNEL=glueviz
-    - PYTHON_VERSION=3.7 CHANNEL=glueviz
-    - PYTHON_VERSION=3.8 CHANNEL=glueviz
-    - PYTHON_VERSION=3.6 CHANNEL=glueviz/label/dev
-    - PYTHON_VERSION=3.7 CHANNEL=glueviz/label/dev
-    - PYTHON_VERSION=3.8 CHANNEL=glueviz/label/dev
+    - PYTHON_VERSION=3.6
+    - PYTHON_VERSION=3.7
+    - PYTHON_VERSION=3.8
   global:
     - MAMBA=True
+    - PACKAGES="glueviz glue-astronomy glue-wwt"
 
 before_install:
   - git clone git://github.com/astropy/ci-helpers.git
   - source ci-helpers/travis/setup_conda.sh
 
 script:
-  - mamba install -c $CHANNEL glueviz=0.15 glue-wwt=0.4 glue-jupyter=0.1
+  - mamba create -n test-stable-mamba -c glueviz python=$PYTHON_VERSION $PACKAGES
+  - mamba create -n test-dev-mamba -c glueviz/label/dev python=$PYTHON_VERSION $PACKAGES
+  - mamba create -n test-cf-mamba -c conda-forge python=$PYTHON_VERSION $PACKAGES
