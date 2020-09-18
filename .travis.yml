@@ -23,9 +23,9 @@ before_install:
 script:
   # NOTE: for glueviz/label/dev we need to use e.g. >=0.999 instead of >=1.0
   # otherwise 1.0.0.dev... doesn't match.
-  - mamba create -n test-stable-mamba -c glueviz python=$PYTHON_VERSION glueviz>=1.0 glue-wwt
-  - mamba create -n test-dev-mamba -c glueviz/label/dev python=$PYTHON_VERSION glueviz>=0.999 glue-wwt
-  - mamba create -n test-cf-mamba -c conda-forge python=$PYTHON_VERSION glueviz>=1.0
-  - conda create -n test-stable-conda -c glueviz python=$PYTHON_VERSION glueviz>=1.0 glue-wwt
-  - conda create -n test-dev-conda -c glueviz/label/dev python=$PYTHON_VERSION glueviz>=0.999 glue-wwt
-  - conda create -n test-cf-conda -c conda-forge python=$PYTHON_VERSION glueviz>=1.0
+  - mamba create -n test-stable-mamba -c glueviz python=$PYTHON_VERSION "glueviz>=1.0" glue-wwt
+  - mamba create -n test-dev-mamba -c glueviz/label/dev python=$PYTHON_VERSION "glueviz>=0.999" glue-wwt
+  - mamba create -n test-cf-mamba -c conda-forge python=$PYTHON_VERSION "glueviz>=1.0"
+  - conda create -n test-stable-conda -c glueviz python=$PYTHON_VERSION "glueviz>=1.0" glue-wwt
+  - conda create -n test-dev-conda -c glueviz/label/dev python=$PYTHON_VERSION "glueviz>=0.999" glue-wwt
+  - conda create -n test-cf-conda -c conda-forge python=$PYTHON_VERSION "glueviz>=1.0"
