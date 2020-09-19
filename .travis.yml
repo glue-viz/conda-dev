@@ -20,6 +20,7 @@ before_install:
   - conda activate base
 
 script:
+  - mamba create -n test-reproject -c $CHANNEL python=$PYTHON_VERSION "reproject>=0.4"
   - mamba create -n test-pywwt -c $CHANNEL python=$PYTHON_VERSION "pywwt>=0.6"
   - mamba create -n test-mamba -c $CHANNEL python=$PYTHON_VERSION $PACKAGES
   - conda create -n test--conda -c $CHANNEL python=$PYTHON_VERSION $PACKAGES
