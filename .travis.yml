@@ -29,3 +29,6 @@ before_install:
 
 script:
   - mamba create -n test-mamba -c $CHANNEL python=$PYTHON_VERSION glue-medical
+  - mamba create -n test-mamba -c $CHANNEL python=$PYTHON_VERSION glue-astronomy
+  - mamba create -n test-mamba -c $CHANNEL python=$PYTHON_VERSION glue-geospatial
+
