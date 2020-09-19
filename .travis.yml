@@ -9,15 +9,7 @@ os:
 
 env:
   matrix:
-    - PYTHON_VERSION=3.6 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt'
-    - PYTHON_VERSION=3.7 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt'
-    - PYTHON_VERSION=3.8 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt'
-    - PYTHON_VERSION=3.6 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt'
-    - PYTHON_VERSION=3.7 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt'
     - PYTHON_VERSION=3.8 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt'
-    - PYTHON_VERSION=3.6 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0'
-    - PYTHON_VERSION=3.7 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0'
-    - PYTHON_VERSION=3.8 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0'
 
   global:
     - MAMBA=True
@@ -28,5 +20,6 @@ before_install:
   - conda activate base
 
 script:
+  - mamba create -n test-pywwt -c $CHANNEL python=$PYTHON_VERSION "pywwt>=0.6"
   - mamba create -n test-mamba -c $CHANNEL python=$PYTHON_VERSION $PACKAGES
   - conda create -n test--conda -c $CHANNEL python=$PYTHON_VERSION $PACKAGES
