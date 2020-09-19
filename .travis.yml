@@ -28,5 +28,4 @@ before_install:
   - conda activate base
 
 script:
-  - mamba create -n test-mamba -c $CHANNEL python=$PYTHON_VERSION $PACKAGES
-  - conda create -n test--conda -c $CHANNEL python=$PYTHON_VERSION $PACKAGES
+  - mamba create -n test-mamba -c $CHANNEL python=$PYTHON_VERSION glue-medical
