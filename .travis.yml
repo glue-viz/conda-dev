@@ -9,15 +9,15 @@ os:
 
 env:
   matrix:
-    - PYTHON_VERSION=3.6 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt'
-    - PYTHON_VERSION=3.7 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt'
-    - PYTHON_VERSION=3.8 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt'
-    - PYTHON_VERSION=3.6 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt'
-    - PYTHON_VERSION=3.7 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt'
-    - PYTHON_VERSION=3.8 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt'
-    - PYTHON_VERSION=3.6 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0'
-    - PYTHON_VERSION=3.7 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0'
-    - PYTHON_VERSION=3.8 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0'
+    - PYTHON_VERSION=3.6 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt glue-astronomy glue-medical glue-geospatial'
+    - PYTHON_VERSION=3.7 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt glue-astronomy glue-medical glue-geospatial'
+    - PYTHON_VERSION=3.8 CHANNEL='glueviz' PACKAGES='glueviz>=1.0 glue-wwt glue-astronomy glue-medical glue-geospatial'
+    - PYTHON_VERSION=3.6 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt glue-astronomy glue-medical glue-geospatial'
+    - PYTHON_VERSION=3.7 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt glue-astronomy glue-medical glue-geospatial'
+    - PYTHON_VERSION=3.8 CHANNEL='glueviz/label/dev' PACKAGES='glueviz>=0.999 glue-wwt glue-astronomy glue-medical glue-geospatial'
+    - PYTHON_VERSION=3.6 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0 glue-geospatial'
+    - PYTHON_VERSION=3.7 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0 glue-geospatial'
+    - PYTHON_VERSION=3.8 CHANNEL='conda-forge' PACKAGES='glueviz>=1.0 glue-geospatial'
 
   global:
     - MAMBA=True
