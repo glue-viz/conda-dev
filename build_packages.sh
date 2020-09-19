@@ -30,24 +30,7 @@ fi
 
 # Packages that need to be build per Python version and architecture
 
-packages="glue-core";
-
-if [[ $PYTHON_VERSION == "3.6" ]]; then
-  packages+=" glue-medical";
-fi
-
-# noarch packages are only build on Python 3.6 on CircleCI
-
-if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" ]]; then
-  packages+=" glue-vispy-viewers glue-astronomy glue-jupyter glue-plotly specviz mosviz glue-geospatial glue-samp glue-wwt";
-fi
-
-if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" && $STABLE == false ]]; then
-  packages+=" glue-openspace glue-regions glue-exp cubeviz";
-fi
-
-# This needs to be built after glue-vispy-viewers
-packages+=" glueviz"
+packages="glue-core glue-medical";
 
 for package in $packages; do
 
