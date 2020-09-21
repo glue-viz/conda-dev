@@ -2,6 +2,13 @@ language: c
 
 sudo: false
 
+notifications:
+  slack:
+    on_success: always
+    on_failure: always
+    secure: PXjIW5DdH2vfeDTUA/CPs0MJXx3sneXk0yjC5faV9hb+wyAxcbgku311MVdAbEXN7HYfdxG2dZRFkHObPcYgJFk85AmXg0s2EkSl8TDIquaqNiFjPWJlstPtNy/voBXTMCqSywdZUrPpg5TCn8IUEWT6VgPOeTQV1WdYHRkJMQhl34YEOjUp7HlWVd83YTaVzDxuQcqXmic3d8JBShMUKDK3NUpw0cUDntzJLPCmpp6PjLPgC4TihjqgYUBnl+ILo6m79MoLgndeanhd+2v4vDI1+2OsA8WGFUlvZgbIEEQGBcAeAejp9qAcNgn2suCHo43tHooxT79GqKAiQytZC03eHAFizOnmUNLzzxE1cqio8+mw2FYUofWEJwU1zgTUZ35Mns+WNalCP5u1gNAiZnXDqbHSbmjaLmJJsnPzTXlPWNCB+kgxPA41d53giDHv5ITpthiXL4Cq2iYLeDP9fGCuJle3PFTD4JxuZMvlxwk3ScnU54BXVoCuS81UctOP9r1EV6r7bvtMfm9Unk63iRUldB7XiKcBJmMPONKEEWNEmhuA3EAUE3r2I9oZqo5lSeiPVaGoi1TYJDhGJjYHrmieGfSASDcKIvB0YnSo5yQLae0U/SjnfAiOQaoAwqsMpc/brn1hwwSCL406agn6Re1t28eW1jVimLDNsiQAceo=
+    if: type = cron
+
 os:
   - linux
   - osx
