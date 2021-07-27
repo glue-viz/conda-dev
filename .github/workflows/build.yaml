@@ -1,0 +1,31 @@
+name: Build conda packages
+
+on:
+  push:
+    branches:
+    - 'test-actions'
+
+jobs:
+  build_applications:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-10.15, ubuntu-18.04, windows-2016]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install library dependencies on Linux
+      if: matrix.os == 'ubuntu-18.04'
+      run: apt -y install libgtk2.0-dev libgl1-mesa-glx libegl1-mesa libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+    - name: Set up conda
+      uses: conda-incubator/setup-miniconda@v2
+    - name: Configure conda
+      run: |
+        conda config --set always_yes yes --set changeps1 no
+        conda install python=3.7 jinja2 pyqt requests=2.18.4
+    - name: Build packages
+      run: ./build_all.sh
+      env:
+        SECRET: ${{ secrets.SECRET }}
