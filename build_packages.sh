@@ -9,6 +9,9 @@ else
   UPLOAD=false;
 fi
 
+# Install Python
+conda install python=3.7
+
 # Install conda-build and the anaconda client
 conda install conda-build anaconda-client
 
