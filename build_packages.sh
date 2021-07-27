@@ -38,11 +38,11 @@ fi
 
 # noarch packages are only build on Python 3.6 on CircleCI
 
-if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" ]]; then
+if [[ $PYTHON_VERSION == "3.7" && $GITHUB_ACTION != "" ]]; then
   packages+=" glue-jupyter glue-plotly specviz mosviz glue-geospatial glue-samp glue-vispy-viewers glue-wwt";
 fi
 
-if [[ $PYTHON_VERSION == "3.6" && $CIRCLE_SHA1 != "" && $STABLE == false ]]; then
+if [[ $PYTHON_VERSION == "3.7" && $GITHUB_ACTION != "" && $STABLE == false ]]; then
   packages+=" glue-openspace glue-regions glue-exp cubeviz";
 fi
 
