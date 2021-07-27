@@ -29,6 +29,7 @@ jobs:
         conda config --set always_yes yes --set changeps1 no
         conda install python=3.7 jinja2 pyqt=5.9 requests
     - name: Build packages
-      run: ./build_all.sh
+      run:  bsah build_all.sh
+      shell: bash
       env:
         SECRET: ${{ secrets.SECRET }}
