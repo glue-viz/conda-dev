@@ -28,6 +28,14 @@ if [[ $STABLE == false ]]; then
   conda config --add channels glueviz/label/dev
 fi
 
+# Print out which Python and conda we are using
+echo "conda path and version:"
+which conda
+conda --version
+echo "python path and version:"
+which python
+python --version
+
 # Packages that need to be build per Python version and architecture
 
 packages="glue-core";
