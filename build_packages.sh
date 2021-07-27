@@ -9,9 +9,6 @@ else
   UPLOAD=false;
 fi
 
-# Switch to the test conda environment
-conda activate test
-
 # Install conda-build and the anaconda client
 conda install conda-build anaconda-client
 

@@ -21,6 +21,9 @@ jobs:
       run: sudo apt -y install libgtk2.0-dev libgl1-mesa-glx libegl1-mesa libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
     - name: Set up conda
       uses: conda-incubator/setup-miniconda@v2
+      with:
+          auto-activate-base: true
+          activate-environment: ""
     - name: Configure conda
       run: |
         conda config --set always_yes yes --set changeps1 no
