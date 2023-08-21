@@ -3,6 +3,8 @@
 
 ### About
 
+**NOTE:** this repository is no longer maintained. To install the latest developer version of packages in the glue ecosystem, see the latest recommendations at http://docs.glueviz.org/en/stable/installation/developer.html
+
 This repository is used to build nightly 'developer' versions of the various glue packages for conda. To install these versions, you can install glueviz from the ``glueviz/label/dev`` channel:
 
     $ conda install -c glueviz/label/dev glueviz
